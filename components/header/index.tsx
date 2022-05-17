@@ -10,9 +10,9 @@ export default function Header() {
   const { pathname } = useRouter();
 
   return (
-    <header className={cn('flex items-center justify-between', 'md:items-end')}>
+    <header className={cn('flex items-center justify-between', 'sm:items-end')}>
       <Link href={Routes.HOME}>
-        <a className={cn('inline-block ml-[15px]', 'md:ml-[40px]')}>
+        <a className={cn('inline-block ml-[15px]', 'sm:ml-[40px]')}>
           <img
             src={getAssetUrl(
               'images/logo-cnb-anti-drug-abuse-campaign-2017.png'
@@ -20,14 +20,14 @@ export default function Header() {
             alt="For A #DrugFreeSG | Anti-Drug Abuse Campaign 2017"
             className={cn(
               'w-auto h-[157px] aspect-[100/157]',
-              'md:h-[234px] md:aspect-[149/234]'
+              'sm:h-[234px] sm:aspect-[149/234]'
             )}
           />
         </a>
       </Link>
       <div role="navigation" aria-label="Menu">
         <ul
-          className={cn('flex flex-col items-end gap-[10px]', 'md:gap-[17px]')}
+          className={cn('flex flex-col items-end gap-[10px]', 'sm:gap-[17px]')}
         >
           <MenuItem href={Routes.ENTER} isActive={pathname === Routes.ENTER}>
             Enter
