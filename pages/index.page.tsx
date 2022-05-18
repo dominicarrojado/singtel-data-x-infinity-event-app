@@ -25,7 +25,7 @@ export default function Home() {
           <span className="block text-[120%] font-black">#DrugFreeSG</span>
         </h1>
       </div>
-      <div className="max-w-[500px] mt-[40px] mx-auto text-white text-center italic">
+      <div className="max-w-[460px] mt-[40px] mx-auto text-white text-center italic">
         <h2 className="text-[22px] tracking-[1px] font-black uppercase">
           Make a pledge!
         </h2>
