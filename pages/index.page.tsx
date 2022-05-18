@@ -12,7 +12,7 @@ export default function Home() {
           'sm:border-[10px]'
         )}
       >
-        <div className="absolute inset-0 shadow-[inset_2px_2px_rgba(68,68,68,1)]" />
+        <div className="absolute inset-0 shadow-[inset_2px_2px_rgba(68,68,68,1)] pointer-events-none" />
         <h1
           className={cn(
             'text-center text-white text-[30px] leading-[40px] font-medium italic uppercase text-shadow',
@@ -44,7 +44,7 @@ export default function Home() {
           <Link href={Routes.ENTER}>
             <a
               className={cn(
-                'group relative inline-block bg-white py-[12px] px-[30px] text-purple-450 font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase',
+                'group relative inline-block bg-white py-[12px] px-[30px] text-purple-450 font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase select-none',
                 'transition-colors hover:bg-purple-75 active:bg-purple-450 active:text-white',
                 'sm:py-[18px] sm:text-[22px] sm:leading-[28px]'
               )}

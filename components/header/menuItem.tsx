@@ -16,7 +16,7 @@ export default function MenuItem({ href, isActive, children }: Props) {
       <Link href={href}>
         <a
           className={cn(
-            'group relative flex min-w-[150px] py-[12px] px-[20px] font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase',
+            'group relative flex min-w-[150px] py-[12px] px-[20px] font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase select-none',
             'transition-colors',
             'sm:min-w-[220px] sm:py-[18px] sm:text-[22px] sm:leading-[28px]',
             isActive
