@@ -2,10 +2,10 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import cn from 'classnames';
 import ButtonArrow from '../buttonArrow';
-import { Routes } from '../../lib/types';
+import { Route } from '../../lib/types';
 
 type Props = {
-  href: Routes;
+  href: Route;
   isActive: boolean;
   children: ReactNode;
 };

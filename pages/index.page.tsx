@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import ButtonArrow from '../components/buttonArrow';
-import { Routes } from '../lib/types';
+import { Route } from '../lib/types';
 
 export default function Home() {
   return (
@@ -41,7 +41,7 @@ export default function Home() {
           </li>
         </ol>
         <div className="mt-[40px]">
-          <Link href={Routes.ENTER}>
+          <Link href={Route.ENTER}>
             <a
               className={cn(
                 'group relative inline-block bg-white py-[12px] px-[30px] text-purple-450 font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase select-none',
