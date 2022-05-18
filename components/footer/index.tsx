@@ -1,12 +1,17 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../../lib/assets';
 import { ExternalUrl, Route } from '../../lib/types';
 import ExternalLink from '../externalLink';
+import ModalTermsAndConditions from '../modalTermsAndConditions';
 import BlockItem from './blockItem';
 
 export default function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalOnOpen = () => setIsModalOpen(true);
+  const modalOnClose = () => setIsModalOpen(false);
+
   return (
     <footer className="flex flex-wrap items-start justify-center max-w-[800px] mx-auto bg-white pt-[20px] pb-[25px] px-[10px] align-top text-gray-750 text-center text-[15px] leading-[20px] italic">
       <BlockItem>
@@ -115,12 +120,14 @@ export default function Footer() {
         </Link>
       </BlockItem>
       <div className="w-full mt-[15px]">
-        <a
-          href="#"
+        <button
+          type="button"
           className={cn('underline', 'transition-colors hover:text-black')}
+          onClick={modalOnOpen}
         >
           Terms &amp; Conditions
-        </a>
+        </button>
+        <ModalTermsAndConditions isOpen={isModalOpen} onClose={modalOnClose} />
       </div>
     </footer>
   );
