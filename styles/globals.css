@@ -9,6 +9,10 @@
 }
 
 @layer base {
+  body {
+    @apply bg-purple-75;
+  }
+
   html,
   body,
   body > div:first-child {
