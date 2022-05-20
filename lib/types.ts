@@ -13,3 +13,9 @@ export enum ExternalUrl {
   CNB_ADAC_YOUTUBE = 'https://www.youtube.com/user/CNBkNOwDrugs',
   CNB_ADAC_SNAPCHAT = 'https://snapchat.com/add/cnb.drugfreesg',
 }
+
+export type Sticker = {
+  imageUrl: string;
+  imageAlt: string;
+  previewImageUrl: string | null;
+};

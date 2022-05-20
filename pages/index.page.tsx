@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import ButtonArrow from '../components/buttonArrow';
+import ButtonLink from '../components/buttonLink';
 import { Route } from '../lib/types';
 
 export default function Home() {
@@ -41,18 +42,12 @@ export default function Home() {
           </li>
         </ol>
         <div className="mt-[40px]">
-          <Link href={Route.ENTER}>
-            <a
-              className={cn(
-                'group relative inline-block bg-white py-[12px] px-[30px] text-purple-450 font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase select-none',
-                'transition-colors hover:bg-purple-75 active:bg-purple-450 active:text-white',
-                'sm:py-[18px] sm:text-[22px] sm:leading-[28px]'
-              )}
-            >
+          <Link href={Route.ENTER} passHref>
+            <ButtonLink>
               <ButtonArrow direction="left" />
               <ButtonArrow direction="right" />
               Make your pledge today!
-            </a>
+            </ButtonLink>
           </Link>
         </div>
       </div>
