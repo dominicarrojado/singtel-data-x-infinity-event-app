@@ -13,7 +13,7 @@ export default function Header() {
     <header className={cn('flex items-center justify-between', 'sm:items-end')}>
       <Link href={Route.HOME}>
         <a
-          className={cn('inline-block ml-[15px]', 'sm:ml-[40px]')}
+          className={cn('inline-block ml-[15px] select-none', 'sm:ml-[40px]')}
           aria-current={pathname === Route.HOME ? 'page' : undefined}
         >
           <img

@@ -14,8 +14,22 @@ export enum ExternalUrl {
   CNB_ADAC_SNAPCHAT = 'https://snapchat.com/add/cnb.drugfreesg',
 }
 
+export enum FetchState {
+  DEFAULT = 'DEFAULT',
+  LOADING = 'LOADING',
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR',
+}
+
 export type Sticker = {
   imageUrl: string;
   imageAlt: string;
   previewImageUrl: string | null;
+};
+
+export type Entry = {
+  mainImageUrl: string;
+  stickerImageUrl: string;
+  name: string;
+  message: string;
 };

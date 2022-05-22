@@ -20,6 +20,19 @@ module.exports = {
         'purple-75': 'rgba(248, 233, 245, 1)',
         'purple-450': 'rgba(170, 56, 149, 1)',
       },
+      keyframes: {
+        expand: {
+          '0%, 80%, 100%': {
+            transform: 'scale(0)',
+          },
+          '40%': {
+            transform: 'scale(1)',
+          },
+        },
+      },
+      animation: {
+        expand: 'expand 1.4s infinite ease-in-out both',
+      },
     },
   },
   plugins: [],

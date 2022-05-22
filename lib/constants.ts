@@ -10,6 +10,9 @@ export const NAME_MAX_LENGTH = 256;
 export const EMAIL_MAX_LENGTH = 320;
 export const MESSAGE_MAX_LENGTH = 150;
 
+export const ENTRIES_PER_PAGE = 9;
+export const ENTRY_IMAGE_SIZE = 345;
+
 export const STICKERS: Array<Sticker> = [
   {
     imageUrl: getAssetUrl('images/sticker-1-secure-a-drug-free-sg.png'),
@@ -60,3 +63,4 @@ export const STICKERS: Array<Sticker> = [
     ),
   },
 ];
+export const STICKERS_LENGTH = STICKERS.length;
