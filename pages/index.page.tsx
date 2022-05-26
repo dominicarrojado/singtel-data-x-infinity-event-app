@@ -9,7 +9,7 @@ export default function Home() {
     <div className={cn('pt-[40px] pb-[70px] px-[15px]', 'sm:px-[40px]')}>
       <div
         className={cn(
-          'relative py-[60px] px-[10px] border-[7px] border-white shadow-[2px_2px_2px_rgba(68,68,68,1)]',
+          'relative py-[60px] px-[10px] border-[5px] border-white shadow-[2px_2px_2px_rgba(68,68,68,1)]',
           'sm:border-[10px]'
         )}
       >

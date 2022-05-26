@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
+import { Button as ReakitButton } from 'reakit';
 import { getFileDataUrl } from '../lib/file';
 import Textarea from '../components/textarea';
 import InputLabel from '../components/inputLabel';
@@ -108,12 +109,14 @@ export default function Enter() {
         <SectionTitle prefix="Step 2">Select a sticker or a badge</SectionTitle>
         <ul className="flex flex-wrap justify-center gap-[40px] mt-[25px]">
           {STICKERS.map((sticker, idx) => (
-            <li
+            <ReakitButton
               key={idx}
               className={cn(
                 'w-[132px] h-[132px] bg-white',
                 'transition-all',
-                idx !== stickerIdx ? 'hover:scale-110' : 'ring-[5px] ring-black'
+                idx !== stickerIdx
+                  ? 'hover:scale-110 focus:scale-110'
+                  : 'ring-[5px] ring-black'
               )}
               onClick={() => setStickerIdx(idx)}
             >
@@ -125,7 +128,7 @@ export default function Enter() {
                 className="w-full h-auto aspect-[345/345]"
                 draggable={false}
               />
-            </li>
+            </ReakitButton>
           ))}
         </ul>
       </SectionContainer>

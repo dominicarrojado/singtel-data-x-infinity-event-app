@@ -1,5 +1,6 @@
 import React, { HTMLProps } from 'react';
 import cn from 'classnames';
+import { Button as ReakitButton } from 'reakit';
 import { getAssetUrl } from '../lib/assets';
 
 type Props = HTMLProps<HTMLLabelElement>;
@@ -10,8 +11,9 @@ export default function InputFileLabelImage({
   ...props
 }: Props) {
   return (
-    <label
+    <ReakitButton
       {...props}
+      as="label"
       className={cn(
         'inline-block cursor-pointer',
         'sm:transition-opacity sm:hover:opacity-50',
@@ -26,6 +28,6 @@ export default function InputFileLabelImage({
         className="max-w-full h-auto aspect-[328/328] select-none"
         draggable={false}
       />
-    </label>
+    </ReakitButton>
   );
 }

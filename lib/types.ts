@@ -2,6 +2,7 @@ export enum Route {
   HOME = '/',
   ENTER = '/enter',
   GALLERY = '/gallery',
+  GALLERY_VIEW = '/gallery/view',
 }
 
 export enum ExternalUrl {

@@ -20,6 +20,10 @@ module.exports = {
         'purple-75': 'rgba(248, 233, 245, 1)',
         'purple-450': 'rgba(170, 56, 149, 1)',
       },
+      backgroundImage: {
+        shimmer:
+          'linear-gradient(to right, rgba(239, 241, 243, 1) 4%, rgba(226, 226, 226, 1) 25%, rgba(239, 241, 243, 1) 36%)',
+      },
       keyframes: {
         expand: {
           '0%, 80%, 100%': {
@@ -29,9 +33,18 @@ module.exports = {
             transform: 'scale(1)',
           },
         },
+        shimmer: {
+          '0%': {
+            'background-position': '-1000px 0',
+          },
+          '100%': {
+            'background-position': '1000px 0',
+          },
+        },
       },
       animation: {
         expand: 'expand 1.4s infinite ease-in-out both',
+        shimmer: 'shimmer 2.2s infinite linear forwards',
       },
     },
   },

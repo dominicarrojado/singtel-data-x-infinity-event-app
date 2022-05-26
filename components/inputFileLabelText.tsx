@@ -1,5 +1,6 @@
 import React, { HTMLProps } from 'react';
 import cn from 'classnames';
+import { Button as ReakitButton } from 'reakit';
 import PencilAltIcon from '@heroicons/react/outline/PencilAltIcon';
 
 type Props = HTMLProps<HTMLLabelElement>;
@@ -10,8 +11,9 @@ export default function InputFileLabelText({
   ...props
 }: Props) {
   return (
-    <label
+    <ReakitButton
       {...props}
+      as="label"
       className={cn(
         'flex items-center gap-[5px] mt-[5px] text-[14px] uppercase cursor-pointer select-none',
         'sm:absolute sm:top-full sm:left-0',
@@ -21,6 +23,6 @@ export default function InputFileLabelText({
     >
       <PencilAltIcon className="h-4 w-4" />
       {children}
-    </label>
+    </ReakitButton>
   );
 }
