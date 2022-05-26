@@ -13,6 +13,16 @@ export const MESSAGE_MAX_LENGTH = 150;
 export const ENTRIES_PER_PAGE = 9;
 export const ENTRY_IMAGE_SIZE = 345;
 
+export const FONTS = [
+  'DIN-Regular',
+  'DIN-Italic',
+  'DIN-Medium',
+  'DIN-MediumItalic',
+  'DIN-Bold',
+  'DIN-BoldItalic',
+  'DIN-BlackItalic',
+];
+
 export const STICKERS: Array<Sticker> = [
   {
     imageUrl: getAssetUrl('images/sticker-1-secure-a-drug-free-sg.png'),
