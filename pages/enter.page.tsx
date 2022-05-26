@@ -49,7 +49,7 @@ export default function Enter() {
         <div
           className={cn(
             'flex flex-col gap-[30px] mt-[25px]',
-            'sm:flex-row sm:items-stretch sm:justify-items-stretch'
+            'sm:flex-row sm:items-stretch sm:justify-center sm:flex-wrap'
           )}
         >
           <div
@@ -87,7 +87,7 @@ export default function Enter() {
               />
             </div>
           </div>
-          <div className="sm:max-w-[50%]">
+          <div className="sm:w-[360px]">
             <InputLabel htmlFor="message">
               Tell us why a drug-free Singapore is important:
             </InputLabel>

@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { getFakerJs } from './imports';
 import { getRandomStickerImageUrl } from './stickers';
 import { Entry, FetchState } from './types';
 import { ENTRIES_PER_PAGE, ENTRY_IMAGE_SIZE } from './constants';
+import { StoreContext } from './store';
 
 export function useGetEntries() {
+  const context = useContext(StoreContext);
+  const { entries, setEntries } = context;
   const [fetchState, setFetchState] = useState(FetchState.DEFAULT);
-  const [entries, setEntries] = useState<Array<Entry>>([]);
   const getMoreEntries = async () => {
     try {
       setFetchState(FetchState.LOADING);
@@ -25,7 +27,7 @@ export function useGetEntries() {
           ),
           stickerImageUrl: getRandomStickerImageUrl(),
           name: faker.name.findName(),
-          message: faker.lorem.paragraph(),
+          message: faker.lorem.sentence(),
         });
       }
 

@@ -10,10 +10,12 @@ export default function Gallery() {
   const [fetchState, entries, getMoreEntries] = useGetEntries();
 
   useEffect(() => {
-    getMoreEntries();
+    if (entries.length === 0) {
+      getMoreEntries();
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [entries]);
 
   return (
     <div className={cn('py-[70px] px-[15px] text-white', 'sm:px-[40px]')}>

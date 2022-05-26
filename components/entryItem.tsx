@@ -1,21 +1,24 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import cn from 'classnames';
 import { Button as ReakitButton } from 'reakit/Button';
 import { Entry, Route } from '../lib/types';
+import { StoreContext } from '../lib/store';
 
 type Props = {
   entry: Entry;
 };
 
 export default function EntryItem({ entry }: Props) {
+  const context = useContext(StoreContext);
   const router = useRouter();
   const [mainImgLoaded, setMainImgLoaded] = useState(false);
   const [stickerImgLoaded, setStickerImgLoaded] = useState(false);
   const mainImgOnLoad = () => setMainImgLoaded(true);
   const stickerImgOnLoad = () => setStickerImgLoaded(true);
   const isLoading = !mainImgLoaded || !stickerImgLoaded;
-  const entryOnClick = () => {
+  const entryOnClick = async () => {
+    await context.setSelectedEntry(entry);
     router.push(Route.GALLERY_VIEW);
   };
 
