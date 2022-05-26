@@ -7,7 +7,14 @@ import { Route } from '../../lib/types';
 import MenuItem from './menuItem';
 
 export default function Header() {
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
+  const galleryOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === Route.GALLERY_VIEW) {
+      e.preventDefault();
+      router.back();
+    }
+  };
 
   return (
     <header className={cn('flex items-center justify-between', 'sm:items-end')}>
@@ -37,7 +44,11 @@ export default function Header() {
           <MenuItem href={Route.ENTER} isActive={pathname === Route.ENTER}>
             Enter
           </MenuItem>
-          <MenuItem href={Route.GALLERY} isActive={pathname === Route.GALLERY}>
+          <MenuItem
+            href={Route.GALLERY}
+            isActive={pathname === Route.GALLERY}
+            onClick={galleryOnClick}
+          >
             Gallery
           </MenuItem>
         </ul>
