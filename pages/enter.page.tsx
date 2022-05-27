@@ -27,8 +27,17 @@ export default function Enter() {
   const selectedSticker = STICKERS[stickerIdx];
   const [imageDataUrl, setImageDataUrl] = useState('');
   const [mainImageDataUrl, setMainImageDataUrl] = useState('');
+  const [message, setMessage] = useState('');
+  const [remainingCharCount, setRemainingCharCount] =
+    useState(MESSAGE_MAX_LENGTH);
   const modalOnClose = () => setIsModalOpen(false);
   const modalOnCrop = (dataUrl: string) => setMainImageDataUrl(dataUrl);
+  const messageOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target;
+
+    setMessage(value);
+    setRemainingCharCount(MESSAGE_MAX_LENGTH - value.length);
+  };
   const fileOnChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
 
@@ -105,12 +114,14 @@ export default function Enter() {
             </InputLabel>
             <div className="mt-[15px]">
               <label className="block text-[15px] mb-[8px]">
-                150/{MESSAGE_MAX_LENGTH} characters
+                {remainingCharCount}/{MESSAGE_MAX_LENGTH} characters
               </label>
               <Textarea
                 id="message"
+                value={message}
                 placeholder="Type here..."
                 maxLength={MESSAGE_MAX_LENGTH}
+                onChange={messageOnChange}
               />
             </div>
           </div>
