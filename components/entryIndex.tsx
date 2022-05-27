@@ -33,7 +33,7 @@ export default function EntryIndex({ selectedEntry }: Props) {
           {isLoading && (
             <div
               className={cn(
-                'absolute top-0 left-0 w-full h-full bg-[#ddd] bg-shimmer bg-[length:1000px_100%]',
+                'absolute top-0 left-0 w-full h-full bg-[#ddd] bg-shimmer bg-[length:500px_100%]',
                 'animate-shimmer'
               )}
             />

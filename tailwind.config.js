@@ -37,16 +37,16 @@ module.exports = {
         },
         shimmer: {
           '0%': {
-            'background-position': '-1000px 0',
+            'background-position': '-500px 0',
           },
           '100%': {
-            'background-position': '1000px 0',
+            'background-position': '500px 0',
           },
         },
       },
       animation: {
         expand: 'expand 1.4s infinite ease-in-out both',
-        shimmer: 'shimmer 2.2s infinite linear forwards',
+        shimmer: 'shimmer 1s infinite linear forwards',
       },
     },
   },
