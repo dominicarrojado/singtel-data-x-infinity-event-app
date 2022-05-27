@@ -16,7 +16,7 @@ export function useImageLoaded() {
     const imageOnLoad = () => setIsImageLoaded(true);
 
     if (imageEl.complete) {
-      setIsImageLoaded(true);
+      imageOnLoad();
     } else {
       imageEl.addEventListener('load', imageOnLoad);
     }

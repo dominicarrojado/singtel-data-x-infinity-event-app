@@ -16,8 +16,6 @@ export default function InputFileLabelImage({
   hasError,
   ...props
 }: Props) {
-  const [imageRef, isImageLoaded] = useImageLoaded();
-
   return (
     <ReakitButton
       {...props}
@@ -25,7 +23,6 @@ export default function InputFileLabelImage({
       title={title}
       className={cn('group relative inline-block cursor-pointer', className)}
     >
-      {!isImageLoaded && <LoaderShimmer />}
       {hasError && (
         <div
           className={cn('absolute inset-0 pointer-events-none', {
@@ -34,7 +31,6 @@ export default function InputFileLabelImage({
         />
       )}
       <img
-        ref={imageRef}
         src={getAssetUrl('images/icon-attach-photo.png')}
         alt={title}
         width="328"
