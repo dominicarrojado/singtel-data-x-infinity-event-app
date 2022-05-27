@@ -28,6 +28,7 @@ export default function SeoTags() {
           url: MAIN_URL,
           title: MAIN_TITLE,
           description: MAIN_DESC,
+          type: 'website',
           images: [
             {
               url: META_IMAGE,
