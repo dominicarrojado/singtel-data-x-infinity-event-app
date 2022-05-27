@@ -4,15 +4,31 @@ import InformationCircleIcon from '@heroicons/react/outline/InformationCircleIco
 import { NextSeo } from 'next-seo';
 import { useGetEntries } from '../../lib/custom-hooks';
 import { getRouteCanonical } from '../../lib/route';
+import { trackEvent } from '../../lib/google-analytics';
 import Button from '../../components/button';
 import EntryItem from '../../components/entryItem';
 import LoaderBubbles from '../../components/loaderBubbles';
 import Alert from '../../components/alert';
 import ExternalLink from '../../components/externalLink';
-import { ErrorMessage, ExternalUrl, FetchState, Route } from '../../lib/types';
+import {
+  ErrorMessage,
+  ExternalUrl,
+  FetchState,
+  GoogleAnalyticsEvent,
+  Route,
+} from '../../lib/types';
+import { PROJECT_TITLE } from '../../lib/constants';
 
 export default function Gallery() {
   const [fetchState, entries, hasEntries, getMoreEntries] = useGetEntries();
+  const loadMoreOnClick = () => {
+    getMoreEntries();
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.PLEDGE_LOAD_MORE,
+      projectTitle: PROJECT_TITLE,
+    });
+  };
 
   useEffect(() => {
     if (!hasEntries) {
@@ -51,7 +67,7 @@ export default function Gallery() {
             </Alert>
           )}
           {hasEntries && fetchState !== FetchState.LOADING ? (
-            <Button onClick={getMoreEntries}>Load more</Button>
+            <Button onClick={loadMoreOnClick}>Load more</Button>
           ) : (
             <LoaderBubbles />
           )}

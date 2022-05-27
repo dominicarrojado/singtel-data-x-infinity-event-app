@@ -46,6 +46,7 @@ export enum GoogleAnalyticsEvent {
   PLEDGE_CREATE = 'pledge_create',
   PLEDGE_RECREATE = 'pledge_recreate',
   PLEDGE_SHARE = 'pledge_share',
+  PLEDGE_LOAD_MORE = 'pledge_load_more',
   PLEDGE_IMAGE_CROP = 'pledge_image_crop',
   PLEDGE_IMAGE_DOWNLOAD = 'pledge_image_download',
   MODAL_OPEN = 'modal_open',

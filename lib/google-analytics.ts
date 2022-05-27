@@ -33,6 +33,11 @@ type EventPledgeShare = {
   pledgeSticker: number;
 };
 
+type EventPledgeLoadMore = {
+  event: GoogleAnalyticsEvent.PLEDGE_LOAD_MORE;
+  projectTitle: string;
+};
+
 type EventPledgeImageCrop = {
   event: GoogleAnalyticsEvent.PLEDGE_IMAGE_CROP;
   projectTitle: string;
@@ -57,6 +62,7 @@ export function trackEvent(
     | EventPledgeCreate
     | EventPledgeRereate
     | EventPledgeShare
+    | EventPledgeLoadMore
     | EventPledgeImageCrop
     | EventPledgeImageDownload
     | EventModalOpen
