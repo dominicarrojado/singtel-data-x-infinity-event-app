@@ -54,7 +54,9 @@ export default function ModalTermsAndConditions({ isOpen, onClose }: Props) {
                 )}
               >
                 <div className="flex justify-between p-[15px] border-b-[1px] border-b-gray-200">
-                  <h3 className="text-xl font-bold">Terms and Conditions</h3>
+                  <Dialog.Title className="text-xl font-bold">
+                    Terms and Conditions
+                  </Dialog.Title>
                   <button type="button" aria-label="Close" onClick={onClose}>
                     <XIcon
                       className={cn(
