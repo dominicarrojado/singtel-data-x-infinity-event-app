@@ -232,7 +232,7 @@ export default function ModalTermsAndConditions({ isOpen, onClose }: Props) {
                     </li>
                   </ol>
                 </div>
-                <div className="flex justify-between p-[15px] border-t-[1px] border-t-gray-200" />
+                <div className="border-t-[1px] border-t-gray-200 p-[15px]" />
               </Dialog.Panel>
             </Transition.Child>
           </div>

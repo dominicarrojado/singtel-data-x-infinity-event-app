@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import cn from 'classnames';
 
-export default function Loader() {
+type Props = HTMLProps<HTMLDivElement>;
+
+export default function Loader({ className, ...props }: Props) {
   return (
     <div
+      {...props}
       className={cn(
         'flex flex-row flex-wrap justify-center items-center gap-[6px] py-[16px]',
-        'sm:py-[25px]'
+        'sm:py-[25px]',
+        className
       )}
     >
       {[0, 1, 2].map((idx) => (

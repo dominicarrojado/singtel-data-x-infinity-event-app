@@ -16,10 +16,20 @@ export enum ExternalUrl {
 }
 
 export enum FetchState {
-  DEFAULT = 'DEFAULT',
-  LOADING = 'LOADING',
-  SUCCESS = 'SUCCESS',
-  ERROR = 'ERROR',
+  DEFAULT = 'default',
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export enum ButtonVariant {
+  DEFAULT = 'default',
+  PRIMARY = 'primary',
+}
+
+export enum ButtonArrowDirection {
+  RIGHT = 'right',
+  LEFT = 'left',
 }
 
 export type Sticker = {

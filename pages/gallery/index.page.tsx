@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import { useEffect } from 'react';
-import { useGetEntries } from '../../lib/hooks';
+import { useGetEntries } from '../../lib/custom-hooks';
 import Button from '../../components/button';
 import EntryItem from '../../components/entryItem';
 import Loader from '../../components/loader';
+import UnexpectedError from '../../components/unexpectedError';
 import { FetchState } from '../../lib/types';
 
 export default function Gallery() {
@@ -26,10 +27,7 @@ export default function Gallery() {
       </ul>
       <div className="mt-[40px] text-center">
         {fetchState === FetchState.ERROR && (
-          <div className={cn('py-[10px] text-[18px] italic', 'sm:py-[19px]')}>
-            An unexpected error occurred. Sorry for the inconvenience, please
-            try again.
-          </div>
+          <UnexpectedError className={cn('py-[10px]', 'sm:py-[19px]')} />
         )}
         {fetchState !== FetchState.LOADING ? (
           <Button onClick={getMoreEntries}>Load more</Button>

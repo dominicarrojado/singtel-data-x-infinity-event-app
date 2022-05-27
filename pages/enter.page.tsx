@@ -13,6 +13,7 @@ import Button from '../components/button';
 import ImageWithSticker from '../components/imageWithSticker';
 import InputFileLabelImage from '../components/inputFileLabelImage';
 import InputFileLabelText from '../components/inputFileLabelText';
+import ModalCropper from '../components/modalCropper';
 import {
   EMAIL_MAX_LENGTH,
   MESSAGE_MAX_LENGTH,
@@ -21,9 +22,13 @@ import {
 } from '../lib/constants';
 
 export default function Enter() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [stickerIdx, setStickerIdx] = useState(-1);
   const selectedSticker = STICKERS[stickerIdx];
-  const [imageDataUrl, setImageDataUrl] = useState<string | null>(null);
+  const [imageDataUrl, setImageDataUrl] = useState('');
+  const [mainImageDataUrl, setMainImageDataUrl] = useState('');
+  const modalOnClose = () => setIsModalOpen(false);
+  const modalOnCrop = (dataUrl: string) => setMainImageDataUrl(dataUrl);
   const fileOnChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
 
@@ -34,6 +39,7 @@ export default function Enter() {
     const dataUrl = await getFileDataUrl(files[0]);
 
     setImageDataUrl(dataUrl);
+    setIsModalOpen(true);
 
     // reset input file
     e.target.value = '';
@@ -56,19 +62,19 @@ export default function Enter() {
             className={cn(
               'text-center',
               'sm:flex sm:justify-center sm:w-[328]',
-              !imageDataUrl
+              !mainImageDataUrl
                 ? 'sm:bg-purple-450 sm:items-center'
                 : 'sm:items-start'
             )}
           >
             <div className="inline-flex">
-              {!imageDataUrl ? (
+              {!mainImageDataUrl ? (
                 <InputFileLabelImage htmlFor="image-upload" />
               ) : (
                 <>
                   <div className="flex flex-col relative">
                     <ImageWithSticker
-                      mainImageUrl={imageDataUrl}
+                      mainImageUrl={mainImageDataUrl}
                       sticker={selectedSticker}
                     />
                     <InputFileLabelText htmlFor="image-upload">
@@ -84,6 +90,12 @@ export default function Enter() {
                 accept="image/jpeg, image/png"
                 className="sr-only"
                 onChange={fileOnChange}
+              />
+              <ModalCropper
+                isOpen={isModalOpen}
+                imageDataUrl={imageDataUrl}
+                onClose={modalOnClose}
+                onCrop={modalOnCrop}
               />
             </div>
           </div>
@@ -107,7 +119,7 @@ export default function Enter() {
       <SectionDivider />
       <SectionContainer>
         <SectionTitle prefix="Step 2">Select a sticker or a badge</SectionTitle>
-        <ul className="flex flex-wrap justify-center gap-[40px] mt-[25px]">
+        <ul className="flex flex-wrap justify-center gap-[40px] mt-[25px] select-none">
           {STICKERS.map((sticker, idx) => (
             <ReakitButton
               key={idx}

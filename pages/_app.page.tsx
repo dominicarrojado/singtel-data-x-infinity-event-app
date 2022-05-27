@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import 'cropperjs/dist/cropper.css';
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
 import Layout from '../components/layout';

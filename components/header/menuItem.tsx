@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import React, { HTMLProps, ReactNode } from 'react';
+import React, { HTMLProps } from 'react';
 import cn from 'classnames';
 import ButtonArrow from '../buttonArrow';
-import { Route } from '../../lib/types';
+import { ButtonArrowDirection, Route } from '../../lib/types';
 
 type Props = HTMLProps<HTMLAnchorElement> & {
   href: Route;
@@ -32,7 +32,10 @@ export default function MenuItem({
           )}
           aria-current={isActive ? 'page' : undefined}
         >
-          <ButtonArrow direction="left" isActive={isActive} />
+          <ButtonArrow
+            direction={ButtonArrowDirection.LEFT}
+            isActive={isActive}
+          />
           {children}
         </a>
       </Link>

@@ -19,6 +19,8 @@ module.exports = {
         'red-550': 'rgba(233, 27, 61, 1)',
         'purple-75': 'rgba(248, 233, 245, 1)',
         'purple-450': 'rgba(170, 56, 149, 1)',
+        'purple-550': 'rgba(151, 50, 132, 1)',
+        'purple-650': 'rgba(132, 43, 115, 1)',
       },
       backgroundImage: {
         shimmer:

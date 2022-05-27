@@ -1,13 +1,22 @@
 import React from 'react';
 import cn from 'classnames';
+import { ButtonArrowDirection, ButtonVariant } from '../lib/types';
 
 type Props = {
-  direction: 'left' | 'right';
+  variant?: ButtonVariant;
+  direction: ButtonArrowDirection;
   isActive?: boolean;
 };
 
-export default function ButtonArrow({ direction, isActive }: Props) {
-  const isLeft = direction === 'left';
+export default function ButtonArrow({
+  variant = ButtonVariant.DEFAULT,
+  direction,
+  isActive,
+}: Props) {
+  const isVariantDefault = variant === ButtonVariant.DEFAULT;
+  const isVariantPrimary = variant === ButtonVariant.PRIMARY;
+  const isDirectionLeft = direction === ButtonArrowDirection.LEFT;
+  const isDirectionRight = direction === ButtonArrowDirection.RIGHT;
 
   return (
     <div
@@ -16,14 +25,24 @@ export default function ButtonArrow({ direction, isActive }: Props) {
         'transition-colors',
         'sm:border-y-[32px]',
         {
-          'right-full border-r-[10px] border-l-0': isLeft,
-          'left-full border-l-[10px] border-r-0': !isLeft,
-          'border-r-purple-450': isLeft && isActive,
+          'right-full border-r-[10px] border-l-0': isDirectionLeft,
+          'left-full border-l-[10px] border-r-0': isDirectionRight,
           'border-r-white group-hover:border-r-purple-75 group-active:border-r-purple-450':
-            isLeft && !isActive,
-          'border-l-purple-450': !isLeft && isActive,
+            isVariantDefault && isDirectionLeft && !isActive,
           'border-l-white group-hover:border-l-purple-75 group-active:border-l-purple-450':
-            !isLeft && !isActive,
+            isVariantDefault && isDirectionRight && !isActive,
+          'border-r-purple-450':
+            isVariantDefault && isDirectionLeft && isActive,
+          'border-l-purple-450':
+            isVariantDefault && isDirectionRight && isActive,
+          'border-r-purple-450 group-hover:border-r-purple-550 group-active:border-r-purple-650':
+            isVariantPrimary && isDirectionLeft && !isActive,
+          'border-l-purple-450 group-hover:border-l-purple-550 group-active:border-l-purple-650':
+            isVariantPrimary && isDirectionRight && !isActive,
+          'border-r-purple-650':
+            isVariantPrimary && isDirectionLeft && isActive,
+          'border-l-purple-650':
+            isVariantPrimary && isDirectionRight && isActive,
         }
       )}
     />

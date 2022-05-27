@@ -43,11 +43,7 @@ export default function Home() {
         </ol>
         <div className="mt-[40px]">
           <Link href={Route.ENTER} passHref>
-            <ButtonLink>
-              <ButtonArrow direction="left" />
-              <ButtonArrow direction="right" />
-              Make your pledge today!
-            </ButtonLink>
+            <ButtonLink>Make your pledge today!</ButtonLink>
           </Link>
         </div>
       </div>
