@@ -13,6 +13,8 @@ export enum ExternalUrl {
   CNB_ADAC_INSTAGRAM = 'https://www.instagram.com/cnb.drugfreesg/',
   CNB_ADAC_YOUTUBE = 'https://www.youtube.com/user/CNBkNOwDrugs',
   CNB_ADAC_SNAPCHAT = 'https://snapchat.com/add/cnb.drugfreesg',
+  SHARER_FACEBOOK = 'https://www.facebook.com/sharer',
+  FAKER = 'https://fakerjs.dev/',
 }
 
 export enum FetchState {
@@ -32,6 +34,11 @@ export enum ButtonArrowDirection {
   LEFT = 'left',
 }
 
+export enum ErrorMessage {
+  FORM_INCOMPLETE = 'Oops! There are some fields that are missing. Please input all required fields and try again.',
+  UNEXPECTED = 'An unexpected error occurred. Sorry for the inconvenience, please try again.',
+}
+
 export type Sticker = {
   imageUrl: string;
   imageAlt: string;
@@ -39,8 +46,8 @@ export type Sticker = {
 };
 
 export type Entry = {
-  mainImageUrl: string;
-  stickerImageUrl: string;
+  imageUrl: string;
   name: string;
+  email: string;
   message: string;
 };

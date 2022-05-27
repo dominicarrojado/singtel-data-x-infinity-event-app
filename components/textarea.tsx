@@ -1,15 +1,26 @@
 import React, { HTMLProps } from 'react';
 import cn from 'classnames';
-import { inputBoxClassName } from './inputBox';
+import {
+  inputBoxClassName,
+  inputBoxErrorClassName,
+  inputBoxPrimaryClassName,
+} from './inputBox';
 
-type Props = HTMLProps<HTMLTextAreaElement>;
+type Props = HTMLProps<HTMLTextAreaElement> & {
+  hasError?: boolean;
+};
 
-export default function Textarea({ className, ...props }: Props) {
+export default function Textarea({ className, hasError, ...props }: Props) {
   return (
     <textarea
       {...props}
       rows={9}
-      className={cn(inputBoxClassName, 'italic resize-none', className)}
+      className={cn(
+        inputBoxClassName,
+        !hasError ? inputBoxPrimaryClassName : inputBoxErrorClassName,
+        'italic resize-none',
+        className
+      )}
     />
   );
 }

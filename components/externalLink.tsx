@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import { ExternalUrl } from '../lib/types';
 
-export type Props = HTMLProps<HTMLAnchorElement> & {
+export type Props = Omit<HTMLProps<HTMLAnchorElement>, 'target' | 'rel'> & {
   href: ExternalUrl;
 };
 

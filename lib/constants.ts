@@ -13,6 +13,10 @@ export const MESSAGE_MAX_LENGTH = 150;
 export const ENTRIES_PER_PAGE = 9;
 export const ENTRY_IMAGE_SIZE = 345;
 
+export const IMAGE_GENERATED_TYPE = 'image/png';
+export const IMAGE_DOWNLOAD_TITLE = 'cnb-anti-drug-abuse-campaign-pledge';
+export const IMAGE_DOWNLOAD_FILE_EXT = IMAGE_GENERATED_TYPE.split('/')[1];
+
 export const FONTS = [
   'DIN-Regular',
   'DIN-Italic',

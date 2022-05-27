@@ -6,9 +6,10 @@ import type Cropper from 'cropperjs';
 import { getRefValue } from '../lib/hooks';
 import { getCropperJs } from '../lib/imports';
 import Button from './button';
-import Loader from './loader';
-import UnexpectedError from './unexpectedError';
-import { ButtonVariant, FetchState } from '../lib/types';
+import LoaderBubbles from './loaderBubbles';
+import Alert from './alert';
+import { ButtonVariant, ErrorMessage, FetchState } from '../lib/types';
+import { IMAGE_GENERATED_TYPE } from '../lib/constants';
 
 type Props = {
   isOpen: boolean;
@@ -37,33 +38,34 @@ export default function ModalCropper({
       const imageEl = getRefValue(imageRef);
       const Cropper = await getCropperJs();
 
-      setFetchState(FetchState.SUCCESS);
-
       cropperRef.current = new Cropper(imageEl, {
         viewMode: 3,
         aspectRatio: 1,
         minCropBoxWidth: 50,
         minCropBoxHeight: 50,
       });
+
+      setFetchState(FetchState.SUCCESS);
     } catch (err) {
       setFetchState(FetchState.ERROR);
     }
   };
-  const beforeLeave = () => {
-    const cropper = getRefValue(cropperRef);
+  const afterLeave = () => {
+    window.requestAnimationFrame(() => {
+      const cropper = getRefValue(cropperRef);
 
-    if (cropper) {
-      cropper.destroy();
-    }
+      if (cropper) {
+        cropper.destroy();
+        cropperRef.current = null;
+      }
+    });
   };
   const cropOnClick = () => {
     const cropper = getRefValue(cropperRef);
-    const dataUrl = cropper.getCroppedCanvas().toDataURL('image/png');
+    const dataUrl = cropper.getCroppedCanvas().toDataURL(IMAGE_GENERATED_TYPE);
 
     onCrop(dataUrl);
     onClose();
-
-    cropper.destroy();
   };
 
   return (
@@ -101,7 +103,7 @@ export default function ModalCropper({
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-4"
               beforeEnter={initiateCropper}
-              beforeLeave={beforeLeave}
+              afterLeave={afterLeave}
             >
               <Dialog.Panel
                 className={cn(
@@ -127,10 +129,12 @@ export default function ModalCropper({
                     {(isLoading || hasError) && (
                       <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center ">
                         {isLoading ? (
-                          <Loader className="absolute inset-0 z-10" />
+                          <LoaderBubbles className="absolute inset-0 z-10" />
                         ) : (
                           <div className="flex flex-col items-center gap-[30px]">
-                            <UnexpectedError className="px-[15px] select-text" />
+                            <Alert className="px-[15px] select-text">
+                              {ErrorMessage.UNEXPECTED}
+                            </Alert>
                             <Button
                               variant={ButtonVariant.DEFAULT}
                               onClick={initiateCropper}

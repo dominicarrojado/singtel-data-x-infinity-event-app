@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 type Props = HTMLProps<HTMLDivElement>;
 
-export default function Loader({ className, ...props }: Props) {
+export default function LoaderBubbles({ className, ...props }: Props) {
   return (
     <div
       {...props}

@@ -8,11 +8,20 @@ import { StoreContext } from '../lib/store';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [entries, setEntries] = useState<Array<Entry>>([]);
+  const [hasEntries, setHasEntries] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState<Entry | null>(null);
-  const storeValue = { entries, selectedEntry, setEntries, setSelectedEntry };
 
   return (
-    <StoreContext.Provider value={storeValue}>
+    <StoreContext.Provider
+      value={{
+        entries,
+        hasEntries,
+        selectedEntry,
+        setEntries,
+        setHasEntries,
+        setSelectedEntry,
+      }}
+    >
       <Layout>
         <Component {...pageProps} />
       </Layout>

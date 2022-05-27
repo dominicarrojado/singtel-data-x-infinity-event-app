@@ -15,6 +15,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'gray-250': 'rgba(221, 221, 221, 1)',
         'gray-750': 'rgba(68, 68, 68, 1)',
         'red-550': 'rgba(233, 27, 61, 1)',
         'purple-75': 'rgba(248, 233, 245, 1)',

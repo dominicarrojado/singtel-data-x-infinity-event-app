@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import cn from 'classnames';
 import { Button as ReakitButton } from 'reakit/Button';
 import { Entry, Route } from '../lib/types';
@@ -12,11 +12,6 @@ type Props = {
 export default function EntryItem({ entry }: Props) {
   const context = useContext(StoreContext);
   const router = useRouter();
-  const [mainImgLoaded, setMainImgLoaded] = useState(false);
-  const [stickerImgLoaded, setStickerImgLoaded] = useState(false);
-  const mainImgOnLoad = () => setMainImgLoaded(true);
-  const stickerImgOnLoad = () => setStickerImgLoaded(true);
-  const isLoading = !mainImgLoaded || !stickerImgLoaded;
   const entryOnClick = async () => {
     await context.setSelectedEntry(entry);
     router.push(Route.GALLERY_VIEW);
@@ -31,32 +26,16 @@ export default function EntryItem({ entry }: Props) {
       )}
       onClick={entryOnClick}
     >
-      {isLoading && (
-        <div
-          className={cn(
-            'absolute top-0 left-0 w-full h-full bg-[#ddd] bg-shimmer bg-[length:1000px_100%]',
-            'animate-shimmer'
-          )}
-        />
-      )}
       <img
-        src={entry.mainImageUrl}
-        alt={`${entry.name} avatar`}
+        src={entry.imageUrl}
+        alt={`${entry.name} pledge`}
         width="345"
         height="345"
         className={cn(
           'w-[245px] max-w-full h-auto aspect-square',
           'transition-opacity group-hover:opacity-80 group-focus:opacity-80'
         )}
-        onLoad={mainImgOnLoad}
-      />
-      <img
-        src={entry.stickerImageUrl}
-        alt={`${entry.name} sticker`}
-        width="345"
-        height="345"
-        className="absolute top-0 left-0 w-full h-full aspect-square"
-        onLoad={stickerImgOnLoad}
+        draggable={false}
       />
     </ReakitButton>
   );
