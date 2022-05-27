@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export enum Route {
   HOME = '/',
   ENTER = '/enter',
@@ -52,6 +54,15 @@ export enum GoogleAnalyticsEvent {
 export enum SocialName {
   FACEBOOK = 'facebook',
 }
+
+export type StoreContextType = {
+  entries: Array<Entry>;
+  hasEntries: boolean;
+  selectedEntry: Entry | null;
+  setEntries: Dispatch<SetStateAction<Array<Entry>>>;
+  setHasEntries: Dispatch<SetStateAction<boolean>>;
+  setSelectedEntry: Dispatch<SetStateAction<Entry | null>>;
+};
 
 export type Sticker = {
   imageUrl: string;

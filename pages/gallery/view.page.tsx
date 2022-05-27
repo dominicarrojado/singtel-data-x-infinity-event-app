@@ -6,7 +6,7 @@ import EntryIndex from '../../components/entryIndex';
 import { Route } from '../../lib/types';
 import { StoreContext } from '../../lib/store';
 
-export default function ViewPage() {
+export default function GalleryView() {
   const router = useRouter();
   const { selectedEntry } = useContext(StoreContext);
 
