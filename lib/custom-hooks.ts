@@ -47,16 +47,20 @@ export function useGetEntries() {
       for (let i = 0; i < newEntriesCount; i++) {
         promises.push(
           (async () => {
+            const mainImageUrl = faker.image.imageUrl(
+              ENTRY_IMAGE_SIZE,
+              ENTRY_IMAGE_SIZE,
+              'people',
+              true,
+              true
+            );
+            const [stickerIdx, stickerImageUrl] = getRandomStickerImageUrl();
+
             return {
+              sticker: stickerIdx + 1,
               imageUrl: await createImageWithSticker(
-                faker.image.imageUrl(
-                  ENTRY_IMAGE_SIZE,
-                  ENTRY_IMAGE_SIZE,
-                  'people',
-                  true,
-                  true
-                ),
-                getRandomStickerImageUrl()
+                mainImageUrl,
+                stickerImageUrl
               ),
               name: faker.name.findName(),
               email: faker.internet.email(),

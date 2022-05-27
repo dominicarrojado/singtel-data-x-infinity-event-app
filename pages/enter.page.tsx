@@ -1,8 +1,10 @@
 import cn from 'classnames';
 import React, { useEffect, useState } from 'react';
+import { NextSeo } from 'next-seo';
+import { getRouteCanonical } from '../lib/route';
 import EntryForm from '../components/entryForm';
 import EntryDone from '../components/entryDone';
-import { Entry } from '../lib/types';
+import { Entry, Route } from '../lib/types';
 import { MESSAGE_MAX_LENGTH, STICKERS } from '../lib/constants';
 
 export default function Enter() {
@@ -30,27 +32,30 @@ export default function Enter() {
   }, [createdEntry]);
 
   return (
-    <div className={cn('py-[50px] px-[15px] text-white', 'sm:px-[40px]')}>
-      {!createdEntry ? (
-        <EntryForm
-          mainImageUrl={mainImageUrl}
-          message={message}
-          remainingCharCount={remainingCharCount}
-          stickerIdx={stickerIdx}
-          selectedSticker={selectedSticker}
-          name={name}
-          email={email}
-          setMainImageUrl={setMainImageUrl}
-          setMessage={setMessage}
-          setRemainingCharCount={setRemainingCharCount}
-          setStickerIdx={setStickerIdx}
-          setName={setName}
-          setEmail={setEmail}
-          setCreatedEntry={setCreatedEntry}
-        />
-      ) : (
-        <EntryDone entry={createdEntry} resetForm={resetForm} />
-      )}
-    </div>
+    <>
+      <NextSeo canonical={getRouteCanonical(Route.ENTER)} />
+      <div className={cn('py-[50px] px-[15px] text-white', 'sm:px-[40px]')}>
+        {!createdEntry ? (
+          <EntryForm
+            mainImageUrl={mainImageUrl}
+            message={message}
+            remainingCharCount={remainingCharCount}
+            stickerIdx={stickerIdx}
+            selectedSticker={selectedSticker}
+            name={name}
+            email={email}
+            setMainImageUrl={setMainImageUrl}
+            setMessage={setMessage}
+            setRemainingCharCount={setRemainingCharCount}
+            setStickerIdx={setStickerIdx}
+            setName={setName}
+            setEmail={setEmail}
+            setCreatedEntry={setCreatedEntry}
+          />
+        ) : (
+          <EntryDone entry={createdEntry} resetForm={resetForm} />
+        )}
+      </div>
+    </>
   );
 }

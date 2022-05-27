@@ -11,6 +11,7 @@ type Props = HTMLProps<HTMLLabelElement> & {
 
 export default function InputFileLabelImage({
   children,
+  title,
   className,
   hasError,
   ...props
@@ -21,6 +22,7 @@ export default function InputFileLabelImage({
     <ReakitButton
       {...props}
       as="label"
+      title={title}
       className={cn('group relative inline-block cursor-pointer', className)}
     >
       {!isImageLoaded && <LoaderShimmer />}
@@ -34,7 +36,7 @@ export default function InputFileLabelImage({
       <img
         ref={imageRef}
         src={getAssetUrl('images/icon-attach-photo.png')}
-        alt="Attach a photo"
+        alt={title}
         width="328"
         height="328"
         className={cn(

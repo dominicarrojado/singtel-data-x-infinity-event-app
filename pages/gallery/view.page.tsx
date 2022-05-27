@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
+import { NextSeo } from 'next-seo';
+import { getRouteCanonical } from '../../lib/route';
+import EntryIndex from '../../components/entryIndex';
 import { Route } from '../../lib/types';
 import { StoreContext } from '../../lib/store';
-import EntryIndex from '../../components/entryIndex';
 
 export default function ViewPage() {
   const router = useRouter();
@@ -16,5 +18,10 @@ export default function ViewPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedEntry]);
 
-  return selectedEntry ? <EntryIndex selectedEntry={selectedEntry} /> : null;
+  return (
+    <>
+      <NextSeo canonical={getRouteCanonical(Route.GALLERY_VIEW)} />
+      {selectedEntry ? <EntryIndex selectedEntry={selectedEntry} /> : null}
+    </>
+  );
 }

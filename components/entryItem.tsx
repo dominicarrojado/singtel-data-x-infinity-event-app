@@ -2,8 +2,10 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import cn from 'classnames';
 import { Button as ReakitButton } from 'reakit/Button';
-import { Entry, Route } from '../lib/types';
+import { trackEvent } from '../lib/google-analytics';
+import { Entry, GoogleAnalyticsEvent, Route } from '../lib/types';
 import { StoreContext } from '../lib/store';
+import { PROJECT_TITLE } from '../lib/constants';
 
 type Props = {
   entry: Entry;
@@ -15,6 +17,12 @@ export default function EntryItem({ entry }: Props) {
   const entryOnClick = async () => {
     await context.setSelectedEntry(entry);
     router.push(Route.GALLERY_VIEW);
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.PLEDGE_CLICK,
+      projectTitle: PROJECT_TITLE,
+      pledgeSticker: entry.sticker,
+    });
   };
 
   return (

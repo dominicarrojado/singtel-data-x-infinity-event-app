@@ -1,20 +1,56 @@
 import React from 'react';
 import { downloadImage } from '../lib/download';
+import { trackEvent } from '../lib/google-analytics';
 import Button from './button';
 import EntryIndexImage from './entryIndexImage';
 import SectionContainer from './sectionContainer';
 import SectionTitle from './sectionTitle';
 import ButtonLink from './buttonLink';
-import { Entry, ExternalUrl } from '../lib/types';
-import { MAIN_URL } from '../lib/constants';
+import {
+  Entry,
+  ExternalUrl,
+  GoogleAnalyticsEvent,
+  SocialName,
+} from '../lib/types';
+import { MAIN_URL, PROJECT_TITLE } from '../lib/constants';
 
 type Props = {
   entry: Entry;
   resetForm: () => void;
 };
 
+const LINK_TEXT_FACEBOOK = 'Share to Facebook';
+const BUTTON_TEXT_DOWNLOAD = 'Download image';
+
 export default function EntryDone({ entry, resetForm }: Props) {
-  const downloadOnClick = () => downloadImage(entry.imageUrl);
+  const shareOnClick = () => {
+    trackEvent({
+      event: GoogleAnalyticsEvent.PLEDGE_SHARE,
+      projectTitle: PROJECT_TITLE,
+      linkText: LINK_TEXT_FACEBOOK,
+      socialName: SocialName.FACEBOOK,
+      pledgeSticker: entry.sticker,
+    });
+  };
+  const downloadOnClick = () => {
+    downloadImage(entry.imageUrl);
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.PLEDGE_IMAGE_DOWNLOAD,
+      projectTitle: PROJECT_TITLE,
+      pledgeSticker: entry.sticker,
+      buttonText: BUTTON_TEXT_DOWNLOAD,
+    });
+  };
+  const resetOnClick = () => {
+    resetForm();
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.PLEDGE_RECREATE,
+      projectTitle: PROJECT_TITLE,
+      pledgeSticker: entry.sticker,
+    });
+  };
 
   return (
     <>
@@ -36,12 +72,12 @@ export default function EntryDone({ entry, resetForm }: Props) {
             )}`}
             target="_blank"
             rel="noopener noreferrer nofollow"
-            title="Share to Facebook"
+            onClick={shareOnClick}
           >
-            Share to Facebook
+            {LINK_TEXT_FACEBOOK}
           </ButtonLink>
-          <Button onClick={downloadOnClick}>Download image</Button>
-          <Button onClick={resetForm}>Make another pledge</Button>
+          <Button onClick={downloadOnClick}>{BUTTON_TEXT_DOWNLOAD}</Button>
+          <Button onClick={resetOnClick}>Make another pledge</Button>
         </div>
       </SectionContainer>
     </>

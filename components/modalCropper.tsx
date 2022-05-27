@@ -5,11 +5,17 @@ import cn from 'classnames';
 import type Cropper from 'cropperjs';
 import { getRefValue } from '../lib/hooks';
 import { getCropperJs } from '../lib/imports';
+import { trackEvent } from '../lib/google-analytics';
 import Button from './button';
 import LoaderBubbles from './loaderBubbles';
 import Alert from './alert';
-import { ButtonVariant, ErrorMessage, FetchState } from '../lib/types';
-import { IMAGE_GENERATED_TYPE } from '../lib/constants';
+import {
+  ButtonVariant,
+  ErrorMessage,
+  FetchState,
+  GoogleAnalyticsEvent,
+} from '../lib/types';
+import { IMAGE_GENERATED_TYPE, PROJECT_TITLE } from '../lib/constants';
 
 type Props = {
   isOpen: boolean;
@@ -66,6 +72,11 @@ export default function ModalCropper({
 
     onCrop(dataUrl);
     onClose();
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.PLEDGE_IMAGE_CROP,
+      projectTitle: PROJECT_TITLE,
+    });
   };
 
   return (
@@ -75,6 +86,7 @@ export default function ModalCropper({
         className="relative z-10"
         initialFocus={cancelButtonRef}
         onClose={onClose}
+        unmount
       >
         <Transition.Child
           as={Fragment}

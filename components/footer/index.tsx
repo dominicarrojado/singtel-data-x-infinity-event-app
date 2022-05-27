@@ -2,14 +2,26 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../../lib/assets';
-import { ExternalUrl, Route } from '../../lib/types';
+import { trackEvent } from '../../lib/google-analytics';
+import { ExternalUrl, GoogleAnalyticsEvent, Route } from '../../lib/types';
 import ExternalLink from '../externalLink';
 import ModalTermsAndConditions from '../modalTermsAndConditions';
 import BlockItem from './blockItem';
+import { PROJECT_TITLE } from '../../lib/constants';
+
+const BUTTON_TEXT_TERMS = 'Terms & Conditions';
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const modalOnOpen = () => setIsModalOpen(true);
+  const termsOnClick = () => {
+    setIsModalOpen(true);
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.MODAL_OPEN,
+      projectTitle: PROJECT_TITLE,
+      buttonText: BUTTON_TEXT_TERMS,
+    });
+  };
   const modalOnClose = () => setIsModalOpen(false);
 
   return (
@@ -123,9 +135,9 @@ export default function Footer() {
         <button
           type="button"
           className={cn('underline', 'transition-colors hover:text-black')}
-          onClick={modalOnOpen}
+          onClick={termsOnClick}
         >
-          Terms &amp; Conditions
+          {BUTTON_TEXT_TERMS}
         </button>
         <ModalTermsAndConditions isOpen={isModalOpen} onClose={modalOnClose} />
       </div>

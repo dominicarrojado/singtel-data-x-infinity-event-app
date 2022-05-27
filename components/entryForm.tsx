@@ -2,6 +2,7 @@ import cn from 'classnames';
 import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { getFileDataUrl } from '../lib/file';
 import { createImageWithSticker } from '../lib/canvas';
+import { trackEvent } from '../lib/google-analytics';
 import Textarea from '../components/textarea';
 import InputLabel from '../components/inputLabel';
 import InputBox from '../components/inputBox';
@@ -17,12 +18,19 @@ import InputFileLabelText from '../components/inputFileLabelText';
 import ModalCropper from '../components/modalCropper';
 import LoaderBubbles from './loaderBubbles';
 import Alert from './alert';
-import { Entry, ErrorMessage, FetchState, Sticker } from '../lib/types';
+import {
+  Entry,
+  ErrorMessage,
+  FetchState,
+  GoogleAnalyticsEvent,
+  Sticker,
+} from '../lib/types';
 import { StoreContext } from '../lib/store';
 import {
   EMAIL_MAX_LENGTH,
   MESSAGE_MAX_LENGTH,
   NAME_MAX_LENGTH,
+  PROJECT_TITLE,
   STICKERS,
 } from '../lib/constants';
 
@@ -42,6 +50,8 @@ type Props = {
   setEmail: Dispatch<SetStateAction<string>>;
   setCreatedEntry: Dispatch<SetStateAction<Entry | null>>;
 };
+
+const BUTTON_TEXT_ATTACH = 'Attach a photo';
 
 export default function EntryForm({
   mainImageUrl,
@@ -91,6 +101,12 @@ export default function EntryForm({
 
     // reset input file
     e.target.value = '';
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.MODAL_OPEN,
+      projectTitle: PROJECT_TITLE,
+      buttonText: BUTTON_TEXT_ATTACH,
+    });
   };
   const formOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -109,9 +125,11 @@ export default function EntryForm({
         mainImageUrl,
         selectedSticker.imageUrl
       );
+      const sticker = stickerIdx + 1;
 
       const createdEntry = {
         imageUrl,
+        sticker,
         message,
         name,
         email,
@@ -122,6 +140,12 @@ export default function EntryForm({
       context.setEntries((currentValue) => [createdEntry, ...currentValue]);
 
       setFetchState(FetchState.SUCCESS);
+
+      trackEvent({
+        event: GoogleAnalyticsEvent.PLEDGE_CREATE,
+        projectTitle: PROJECT_TITLE,
+        pledgeSticker: sticker,
+      });
     } catch (err) {
       setFetchState(FetchState.ERROR);
     }
@@ -150,6 +174,7 @@ export default function EntryForm({
               {!mainImageUrl ? (
                 <InputFileLabelImage
                   htmlFor="image-upload"
+                  title={BUTTON_TEXT_ATTACH}
                   hasError={isFormIncomplete && !mainImageUrl}
                 />
               ) : (
