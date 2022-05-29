@@ -9,9 +9,12 @@
 }
 
 @layer base {
+  html {
+    @apply overflow-y-scroll;
+  }
+
   body {
     @apply bg-purple-75;
-    @apply overflow-y-scroll;
   }
 
   html,
