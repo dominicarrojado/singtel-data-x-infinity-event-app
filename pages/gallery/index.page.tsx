@@ -44,8 +44,8 @@ export default function Gallery() {
       <div className={cn('py-[70px] px-[15px] text-white', 'sm:px-[40px]')}>
         {hasEntries && (
           <>
-            <div className="mb-[20px] italic">
-              <InformationCircleIcon className="inline-block w-5 h-5 -mt-1 mr-2 flex-shrink-0" />
+            <div className="w-full max-w-[480px] mx-auto py-1 px-2 bg-white mb-[20px] text-[14px] text-purple-450 italic">
+              <InformationCircleIcon className="inline-block w-4 h-4 -mt-[3px] mr-1" />
               The fake (but realistic) pledges shown below are made possible
               with{' '}
               <ExternalLink href={ExternalUrl.FAKER} className="underline">
