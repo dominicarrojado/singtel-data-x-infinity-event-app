@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import InformationCircleIcon from '@heroicons/react/outline/InformationCircleIcon';
 import { NextSeo } from 'next-seo';
 import { useGetEntries } from '../../lib/custom-hooks';
@@ -20,6 +20,7 @@ import {
 import { PROJECT_TITLE } from '../../lib/constants';
 
 export default function Gallery() {
+  const metaUrl = useMemo(() => getRouteCanonical(Route.GALLERY), []);
   const [fetchState, entries, hasEntries, getMoreEntries] = useGetEntries();
   const loadMoreOnClick = () => {
     getMoreEntries();
@@ -40,7 +41,7 @@ export default function Gallery() {
 
   return (
     <>
-      <NextSeo canonical={getRouteCanonical(Route.GALLERY)} />
+      <NextSeo canonical={metaUrl} openGraph={{ url: metaUrl }} />
       <div className={cn('py-[70px] px-[15px] text-white', 'sm:px-[40px]')}>
         {hasEntries && (
           <>
