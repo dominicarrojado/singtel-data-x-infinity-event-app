@@ -1,10 +1,30 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { getAssetUrl } from '../lib/assets';
+import { FONTS } from '../lib/constants';
 
 export default function FontFaces() {
   return (
     <Head>
+      {FONTS.map((font, idx) => (
+        <Fragment key={idx}>
+          <link
+            rel="preload"
+            href={getAssetUrl(`fonts/${font}.woff2`)}
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href={getAssetUrl(`fonts/${font}.woff2`)}
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+        </Fragment>
+      ))}
+
       <style
         dangerouslySetInnerHTML={{
           __html: `

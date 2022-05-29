@@ -1,13 +1,13 @@
 import '../styles/globals.css';
 import 'cropperjs/dist/cropper.css';
 import type { AppProps } from 'next/app';
-import Script from 'next/script';
 import { useState } from 'react';
 import SeoTags from '../components/seoTags';
+import FontFaces from '../components/fontFaces';
+import TagManager from '../components/tagManager';
 import Layout from '../components/layout';
 import { Entry } from '../lib/types';
 import { StoreContext } from '../lib/store';
-import TagManager from '../components/tagManager';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [entries, setEntries] = useState<Array<Entry>>([]);
@@ -15,21 +15,24 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [selectedEntry, setSelectedEntry] = useState<Entry | null>(null);
 
   return (
-    <StoreContext.Provider
-      value={{
-        entries,
-        hasEntries,
-        selectedEntry,
-        setEntries,
-        setHasEntries,
-        setSelectedEntry,
-      }}
-    >
+    <>
       <SeoTags />
+      <FontFaces />
       <TagManager />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </StoreContext.Provider>
+      <StoreContext.Provider
+        value={{
+          entries,
+          hasEntries,
+          selectedEntry,
+          setEntries,
+          setHasEntries,
+          setSelectedEntry,
+        }}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </StoreContext.Provider>
+    </>
   );
 }
