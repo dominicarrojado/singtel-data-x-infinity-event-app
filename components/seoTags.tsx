@@ -17,6 +17,8 @@ export default function SeoTags() {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#e91b3d" />
         <link rel="icon" href={`${MAIN_ORIGIN}/favicon.ico`} />
         <link rel="manifest" href={`${MAIN_ORIGIN}/manifest.json`} />
       </Head>
