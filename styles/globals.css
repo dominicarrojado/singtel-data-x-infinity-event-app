@@ -26,4 +26,9 @@
     image-rendering: -o-crisp-edges;
     image-rendering: crisp-edges;
   }
+
+  input[type='text'],
+  textarea {
+    -webkit-appearance: none;
+  }
 }
