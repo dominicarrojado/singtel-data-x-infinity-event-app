@@ -2,7 +2,7 @@
 
 ![CI/CD](https://github.com/dominicarrojado/cnb-anti-drug-abuse-campaign-app/workflows/CI/CD/badge.svg)
 
-A anti-drug campaign photo contest app for the public to pledge a drug-free nation built with [Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/).
+A anti-drug campaign photo contest app for the public to pledge a drug-free nation built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Quick Start
 
@@ -50,3 +50,9 @@ yarn export
 ```
 
 2. The `out` directory can be served by any static hosting service or CDN.
+
+## VSCode Extensions
+
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
