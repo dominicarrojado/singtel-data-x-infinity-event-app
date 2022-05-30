@@ -17,6 +17,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'sky-75': 'rgba(217, 236, 242, 1)',
         'sky-350': 'rgba(71, 182, 224, 1)',
         'sky-375': 'rgba(59, 151, 179, 1)',
         'sky-450': 'rgba(39, 110, 142, 1)',
