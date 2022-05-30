@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import Header from './header';
-import Footer from './footer';
 import { Route } from '../lib/types';
 
 type Props = {
@@ -35,7 +34,6 @@ export default function Layout({ children }: Props) {
         <Header />
         <main>{children}</main>
       </div>
-      <Footer />
     </div>
   );
 }
