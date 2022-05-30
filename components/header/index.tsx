@@ -17,30 +17,15 @@ export default function Header() {
   };
 
   return (
-    <header className={cn('flex items-center justify-between', 'sm:items-end')}>
-      <Link href={Route.HOME}>
-        <a
-          className={cn('inline-block ml-[15px] select-none', 'sm:ml-[40px]')}
-          aria-current={pathname === Route.HOME ? 'page' : undefined}
-        >
-          <img
-            src={getAssetUrl(
-              'images/logo-cnb-anti-drug-abuse-campaign-2017.png'
-            )}
-            alt="For A #DrugFreeSG | Anti-Drug Abuse Campaign 2017"
-            width="149"
-            height="234"
-            className={cn(
-              'w-auto h-[157px] aspect-[100/157]',
-              'sm:h-[234px] sm:aspect-[149/234]'
-            )}
-          />
-        </a>
-      </Link>
+    <header
+      className={cn(
+        'flex items-end justify-between px-[20px] pb-[6px]',
+        'xs:pb-[20px]',
+        'sm:items-end sm:pb-[25px] sm:px-[40px]'
+      )}
+    >
       <div role="navigation" aria-label="Menu">
-        <ul
-          className={cn('flex flex-col items-end gap-[10px]', 'sm:gap-[17px]')}
-        >
+        <ul className={cn('flex gap-[10px]', 'xs:gap-[15px]', 'sm:gap-[20px]')}>
           <MenuItem href={Route.ENTER} isActive={pathname === Route.ENTER}>
             Enter
           </MenuItem>
@@ -53,6 +38,28 @@ export default function Header() {
           </MenuItem>
         </ul>
       </div>
+      <Link href={Route.HOME}>
+        <a
+          className={cn(
+            'inline-block -mb-[6px] ml-[15px] select-none',
+            'xs:-mb-[20px]',
+            'sm:-mb-[25px] sm:ml-[40px]'
+          )}
+          aria-current={pathname === Route.HOME ? 'page' : undefined}
+        >
+          <img
+            src={getAssetUrl('images/logo-singtel.png')}
+            alt="Singtel"
+            width="145"
+            height="80"
+            className={cn(
+              'w-auto h-[48px] aspect-[87/48]',
+              'xs:h-[53px] xs:aspect-[96/53]',
+              'sm:h-[64px] sm:aspect-[116/64]'
+            )}
+          />
+        </a>
+      </Link>
     </header>
   );
 }

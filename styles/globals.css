@@ -14,7 +14,8 @@
   }
 
   body {
-    @apply bg-purple-75;
+    @apply bg-sky-375;
+    @apply antialiased;
   }
 
   html,

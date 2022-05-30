@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import React, { HTMLProps } from 'react';
 import cn from 'classnames';
-import ButtonArrow from '../buttonArrow';
-import { ButtonArrowDirection, Route } from '../../lib/types';
+import { Route } from '../../lib/types';
 
 type Props = HTMLProps<HTMLAnchorElement> & {
   href: Route;
@@ -22,20 +21,17 @@ export default function MenuItem({
         <a
           {...props}
           className={cn(
-            'group relative flex min-w-[150px] py-[12px] px-[20px] font-medium text-[18px] leading-[22px] tracking-[1px] italic uppercase select-none',
+            'group pt-[30px] pb-[12px] px-[20px] text-white text-[15px] leading-[1] select-none',
             'transition-colors',
-            'sm:min-w-[220px] sm:py-[18px] sm:text-[22px] sm:leading-[28px]',
+            'xs:text-[20px]',
+            'sm:px-[24px] sm:text-[30px]',
             className,
             isActive
-              ? 'bg-purple-450 text-white'
-              : 'bg-white text-purple-450 hover:bg-purple-75 active:bg-purple-450 active:text-white'
+              ? 'bg-sky-350'
+              : 'bg-sky-450 hover:bg-sky-475 active:bg-purple-350'
           )}
           aria-current={isActive ? 'page' : undefined}
         >
-          <ButtonArrow
-            direction={ButtonArrowDirection.LEFT}
-            isActive={isActive}
-          />
           {children}
         </a>
       </Link>

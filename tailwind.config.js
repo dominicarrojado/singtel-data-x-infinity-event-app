@@ -17,13 +17,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        'gray-250': 'rgba(221, 221, 221, 1)',
-        'gray-750': 'rgba(68, 68, 68, 1)',
-        'red-550': 'rgba(233, 27, 61, 1)',
-        'purple-75': 'rgba(248, 233, 245, 1)',
-        'purple-450': 'rgba(170, 56, 149, 1)',
-        'purple-550': 'rgba(151, 50, 132, 1)',
-        'purple-650': 'rgba(132, 43, 115, 1)',
+        'sky-350': 'rgba(71, 182, 224, 1)',
+        'sky-375': 'rgba(59, 151, 179, 1)',
+        'sky-450': 'rgba(39, 110, 142, 1)',
+        'sky-475': 'rgba(28, 127, 165, 1)',
       },
       backgroundImage: {
         shimmer:
