@@ -1,8 +1,8 @@
-# CNB Anti-Drug Abuse Campaign App
+# Singtel Data ∞ Infinity Event App
 
-![CI/CD](https://github.com/dominicarrojado/cnb-anti-drug-abuse-campaign-app/workflows/CI/CD/badge.svg)
+![CI/CD](https://github.com/dominicarrojado/singtel-data-x-infinity-event-app/workflows/CI/CD/badge.svg)
 
-A anti-drug campaign photo contest app for the public to pledge a drug-free nation built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
+A photo contest app for Singtel's Data ∞ Infinity Event built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Quick Start
 
@@ -10,13 +10,13 @@ A anti-drug campaign photo contest app for the public to pledge a drug-free nati
 2. Clone the app:
 
 ```bash
-git clone git@github.com:dominicarrojado/cnb-anti-drug-abuse-campaign-app.git
+git clone git@github.com:dominicarrojado/singtel-data-x-infinity-event-app.git
 ```
 
 3. Install dependencies:
 
 ```bash
-cd cnb-anti-drug-abuse-campaign-app
+cd singtel-data-x-infinity-event-app
 yarn install
 ```
 
