@@ -11,7 +11,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     fontFamily: {
-      sans: ['DIN', 'Helvetica', 'Arial', 'sans-serif'],
+      sans: ['"Museo 500"', 'Helvetica', 'Arial', 'sans-serif'],
+      avenir: ['Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+      myriadpro: ['"Myriad Pro"', 'Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
       colors: {

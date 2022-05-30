@@ -1,8 +1,8 @@
-# Singtel Data ∞ Infinity Event App
+# Singtel Data X Infinity Event App
 
 ![CI/CD](https://github.com/dominicarrojado/singtel-data-x-infinity-event-app/workflows/CI/CD/badge.svg)
 
-A photo contest app for Singtel's Data ∞ Infinity Event built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
+A photo contest app for Singtel's Data X Infinity Event built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Quick Start
 
