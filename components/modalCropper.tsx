@@ -9,12 +9,7 @@ import { trackEvent } from '../lib/google-analytics';
 import Button from './button';
 import LoaderBubbles from './loaderBubbles';
 import Alert from './alert';
-import {
-  ButtonVariant,
-  ErrorMessage,
-  FetchState,
-  GoogleAnalyticsEvent,
-} from '../lib/types';
+import { ErrorMessage, FetchState, GoogleAnalyticsEvent } from '../lib/types';
 import { IMAGE_GENERATED_TYPE, PROJECT_TITLE } from '../lib/constants';
 
 type Props = {
@@ -149,12 +144,7 @@ export default function ModalCropper({
                             <Alert className="px-[15px] select-text">
                               {ErrorMessage.UNEXPECTED}
                             </Alert>
-                            <Button
-                              variant={ButtonVariant.DEFAULT}
-                              onClick={initiateCropper}
-                            >
-                              Retry
-                            </Button>
+                            <Button onClick={initiateCropper}>Retry</Button>
                           </div>
                         )}
                       </div>
@@ -167,11 +157,7 @@ export default function ModalCropper({
                   </div>
                 </div>
                 <div className="border-t-[1px] border-t-gray-200 p-[15px] text-center">
-                  <Button
-                    variant={ButtonVariant.PRIMARY}
-                    disabled={!isSuccess}
-                    onClick={cropOnClick}
-                  >
+                  <Button disabled={!isSuccess} onClick={cropOnClick}>
                     Crop
                   </Button>
                 </div>

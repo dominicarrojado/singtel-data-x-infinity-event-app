@@ -18,11 +18,14 @@ export default function Layout({ children }: Props) {
   return (
     <div className="flex flex-col min-h-full">
       <div
-        className={cn('flex-1 w-full max-w-[800px] mx-auto bg-sky-375', {
-          'bg-repeat-y': isRouteHome || isRouteGallery,
-          'bg-bottom': isRouteHome,
-          'bg-top': isRouteEnter || isRouteGallery,
-        })}
+        className={cn(
+          'flex-1 flex flex-col w-full max-w-[800px] mx-auto bg-sky-375',
+          {
+            'bg-repeat-y': isRouteHome || isRouteGallery,
+            'bg-bottom': isRouteHome,
+            'bg-top': isRouteEnter || isRouteGallery,
+          }
+        )}
         style={{
           backgroundImage: `url(${getAssetUrl(
             isRouteEnter
@@ -32,7 +35,7 @@ export default function Layout({ children }: Props) {
         }}
       >
         <Header />
-        <main>{children}</main>
+        <main className="flex flex-col flex-1">{children}</main>
       </div>
     </div>
   );

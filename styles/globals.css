@@ -16,6 +16,7 @@
   body {
     @apply bg-sky-75;
     @apply antialiased;
+    @apply text-white;
   }
 
   html,

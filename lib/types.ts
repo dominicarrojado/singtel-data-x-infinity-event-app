@@ -26,16 +26,6 @@ export enum FetchState {
   ERROR = 'error',
 }
 
-export enum ButtonVariant {
-  DEFAULT = 'default',
-  PRIMARY = 'primary',
-}
-
-export enum ButtonArrowDirection {
-  RIGHT = 'right',
-  LEFT = 'left',
-}
-
 export enum ErrorMessage {
   FORM_INCOMPLETE = 'Oops! There are some fields that are missing. Please input all required fields and try again.',
   UNEXPECTED = 'An unexpected error occurred. Sorry for the inconvenience, please try again.',

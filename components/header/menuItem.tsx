@@ -28,7 +28,7 @@ export default function MenuItem({
             className,
             isActive
               ? 'bg-sky-350'
-              : 'bg-sky-450 hover:bg-sky-475 active:bg-purple-350'
+              : 'bg-sky-450 hover:bg-sky-475 active:bg-sky-350'
           )}
           aria-current={isActive ? 'page' : undefined}
         >

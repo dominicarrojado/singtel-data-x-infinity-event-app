@@ -19,9 +19,9 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'flex items-end justify-between px-[20px] pb-[6px]',
-        'xs:pb-[20px]',
-        'sm:items-end sm:pb-[25px] sm:px-[40px]'
+        'flex items-end justify-between px-[20px] pb-[40px]',
+        'xs:pb-[75px]',
+        'sm:items-end sm:pb-[145px] sm:px-[40px]'
       )}
     >
       <div role="navigation" aria-label="Menu">

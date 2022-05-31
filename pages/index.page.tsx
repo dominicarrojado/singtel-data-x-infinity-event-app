@@ -1,52 +1,63 @@
-import cn from 'classnames';
 import Link from 'next/link';
-import ButtonArrow from '../components/buttonArrow';
+import cn from 'classnames';
 import ButtonLink from '../components/buttonLink';
+import HeroBanner from '../components/heroBanner';
+import { getAssetUrl } from '../lib/assets';
 import { Route } from '../lib/types';
 
 export default function Home() {
   return (
-    <div className={cn('pt-[40px] pb-[70px] px-[15px]', 'sm:px-[40px]')}>
-      <div
-        className={cn(
-          'relative py-[60px] px-[10px] border-[5px] border-white shadow-[2px_2px_2px_rgba(68,68,68,1)]',
-          'sm:border-[10px]'
-        )}
-      >
-        <div className="absolute inset-0 shadow-[inset_2px_2px_rgba(68,68,68,1)] pointer-events-none" />
-        <h1
+    <>
+      <div className={cn('px-[20px]', 'sm:px-[40px]')}>
+        <HeroBanner />
+        <div
           className={cn(
-            'text-center text-white text-[30px] leading-[40px] font-medium italic uppercase text-shadow',
-            'xs:text-[37px] xs:leading-[50px]',
-            'sm:text-[50px] sm:leading-[65px]',
-            'md:text-[72px] md:leading-[90px]'
+            'text-[22px] leading-7',
+            'xs:text-[25px] xs:leading-8',
+            'sm:text-[30px] sm:leading-9'
           )}
         >
-          <span className="block">Secure a</span>
-          <span className="block text-[120%] font-black">#DrugFreeSG</span>
-        </h1>
-      </div>
-      <div className="max-w-[460px] mt-[40px] mx-auto text-white text-center italic">
-        <h2 className="text-[22px] tracking-[1px] font-black uppercase">
-          Make a pledge!
-        </h2>
-        <ol className="flex flex-col gap-4 mt-[20px] text-[18px]">
-          <li>
-            1. Upload your photo and tell us why a drug-free environment is
-            important for Singapore.
-          </li>
-          <li>2. Select a sticker for your photo.</li>
-          <li>
-            3. Share on Facebook and stand a chance to win up to $100 worth of
-            vouchers in a bimonthly draw!
-          </li>
-        </ol>
-        <div className="mt-[40px]">
+          You asked. We listened. <br className={cn('hidden', 'xs:block')} />
+          Introducing DATA X INFINITY.
+        </div>
+        <div
+          className={cn(
+            'mt-2 font-avenir text-[16px]',
+            'xs:text-[17px]',
+            'sm:text-[20px]'
+          )}
+        >
+          Get unlimited data for a flat flee of $39.90/mth!{' '}
+          <br className={cn('hidden', 'xs:block')} />
+          Let us know what you would do with all that data!
+        </div>
+        <div className={cn('mt-[30px]', 'xs:mt-[35px]', 'sm:mt-[50px]')}>
           <Link href={Route.ENTER} passHref>
-            <ButtonLink>Make your pledge today!</ButtonLink>
+            <ButtonLink
+              className={cn(
+                'max-w-[265px]',
+                'xs:max-w-[305px]',
+                'sm:max-w-[445px]'
+              )}
+              withArrow
+            >
+              Tell us how you would use your unlimited data.
+            </ButtonLink>
           </Link>
         </div>
       </div>
-    </div>
+      <div
+        className={cn(
+          'flex justify-end mt-auto pt-[40px]',
+          'sm:-mt-28 sm:pt-0'
+        )}
+      >
+        <img
+          src={getAssetUrl('images/illus-coconut-trees.png')}
+          alt="coconut trees"
+          className={cn('w-[80%] aspect-[657/914]', 'xs:w-[70%]', 'xs:w-[60%]')}
+        />
+      </div>
+    </>
   );
 }

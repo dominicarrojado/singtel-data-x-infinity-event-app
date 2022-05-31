@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo';
 import { useGetEntries } from '../../lib/custom-hooks';
 import { getRouteCanonical } from '../../lib/route';
 import { trackEvent } from '../../lib/google-analytics';
+import HeroBanner from '../../components/heroBanner';
 import Button from '../../components/button';
 import EntryItem from '../../components/entryItem';
 import LoaderBubbles from '../../components/loaderBubbles';
@@ -42,11 +43,18 @@ export default function Gallery() {
   return (
     <>
       <NextSeo canonical={metaUrl} openGraph={{ url: metaUrl }} />
-      <div className={cn('py-[70px] px-[15px] text-white', 'sm:px-[40px]')}>
+      <div className={cn('pb-[70px] px-[20px] text-white', 'sm:px-[40px]')}>
+        <HeroBanner />
         {hasEntries && (
           <>
-            <div className="w-full max-w-[480px] mx-auto py-1 px-2 bg-white mb-[20px] text-[14px] text-purple-450 italic">
-              <InformationCircleIcon className="inline-block w-4 h-4 -mt-[3px] mr-1" />
+            <div
+              className={cn(
+                'w-full mb-[20px] font-avenir text-[14px]',
+                'xs:text-[15px]',
+                'sm:text-[16px]'
+              )}
+            >
+              <InformationCircleIcon className="inline-block w-4 h-4 -mt-[4px] mr-1" />
               The fake (but realistic) pledges shown below are made possible
               with{' '}
               <ExternalLink href={ExternalUrl.FAKER} className="underline">
