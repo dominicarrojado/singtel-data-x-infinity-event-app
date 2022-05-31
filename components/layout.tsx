@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import Header from './header';
@@ -15,6 +15,19 @@ export default function Layout({ children }: Props) {
   const isRouteEnter = pathname === Route.ENTER;
   const isRouteGallery = pathname === Route.GALLERY;
   const isRouteGalleryView = pathname === Route.GALLERY_VIEW;
+  const bgImgSrc = useMemo(() => {
+    let src;
+
+    if (isRouteEnter) {
+      src = 'images/bg-futuristic-fold-top.jpeg';
+    } else if (isRouteGallery) {
+      src = 'images/bg-futuristic-fold-middle.jpeg';
+    } else {
+      src = 'images/bg-futuristic-fold-bottom.jpeg';
+    }
+
+    return getAssetUrl(src);
+  }, [isRouteEnter, isRouteGallery]);
 
   return (
     <div className="flex flex-col min-h-full">
@@ -28,11 +41,7 @@ export default function Layout({ children }: Props) {
           }
         )}
         style={{
-          backgroundImage: `url(${getAssetUrl(
-            isRouteEnter
-              ? 'images/bg-futuristic-fold-top.jpeg'
-              : 'images/bg-futuristic-fold-bottom.jpeg'
-          )})`,
+          backgroundImage: `url(${bgImgSrc})`,
         }}
       >
         <Header />

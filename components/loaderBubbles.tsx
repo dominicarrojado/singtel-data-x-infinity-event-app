@@ -8,8 +8,9 @@ export default function LoaderBubbles({ className, ...props }: Props) {
     <div
       {...props}
       className={cn(
-        'flex flex-row flex-wrap justify-center items-center gap-[6px] py-[16px]',
-        'sm:py-[25px]',
+        'flex flex-row flex-wrap justify-center items-center gap-[6px] py-[14px]',
+        'xs:py-[20px]',
+        'sm:py-[30px]',
         className
       )}
     >
