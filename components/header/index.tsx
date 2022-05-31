@@ -41,7 +41,7 @@ export default function Header() {
       <Link href={Route.HOME}>
         <a
           className={cn(
-            'inline-block -mb-[6px] ml-[15px] select-none',
+            'inline-block flex-shrink-0 -mb-[6px] ml-[15px] select-none',
             'xs:-mb-[20px]',
             'sm:-mb-[25px] sm:ml-[40px]'
           )}

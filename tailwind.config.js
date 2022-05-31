@@ -22,6 +22,8 @@ module.exports = {
         'sky-375': 'rgba(59, 151, 179, 1)',
         'sky-450': 'rgba(39, 110, 142, 1)',
         'sky-475': 'rgba(28, 127, 165, 1)',
+        'sky-550': 'rgba(1, 151, 179, 1)',
+        'purple-350': 'rgba(210, 80, 147, 1)',
       },
       backgroundImage: {
         shimmer:
