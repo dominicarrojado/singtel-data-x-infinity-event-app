@@ -120,7 +120,13 @@ export default function ModalCropper({
                 )}
               >
                 <div className="flex justify-between p-[15px] border-b-[1px] border-b-gray-200">
-                  <Dialog.Title className="text-xl font-bold">
+                  <Dialog.Title
+                    className={cn(
+                      'text-[#444] text-xl',
+                      'xs:text-2xl',
+                      'sm:text-3xl'
+                    )}
+                  >
                     Crop Image
                   </Dialog.Title>
                   <button type="button" aria-label="Close" onClick={onClose}>
