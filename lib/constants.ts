@@ -8,7 +8,7 @@ export const MAIN_TITLE = `${PROJECT_TITLE} | ${SITE_NAME}`;
 export const MAIN_DESC =
   'Singtel Data X Infinity - Infinite possibilities. Infinite data.';
 export const MAIN_ORIGIN = 'https://dominicarrojado.com';
-export const MAIN_PATH = '/singtel-data-x-infinity-event/';
+export const MAIN_PATH = '/singtel-data-x-infinity-event-app/';
 export const MAIN_URL = `${MAIN_ORIGIN}${MAIN_PATH}`;
 export const META_IMAGE = `${MAIN_URL}images/screenshot.png`;
 export const META_IMAGE_WIDTH = 2880;
