@@ -1,7 +1,11 @@
 import React, { ForwardedRef, forwardRef, HTMLProps } from 'react';
 import cn from 'classnames';
 import ButtonArrow from './buttonArrow';
-import { buttonClassName } from './button';
+import {
+  buttonClassName,
+  buttonNoArrowClassName,
+  buttonWithArrowClassName,
+} from './button';
 
 type Props = HTMLProps<HTMLAnchorElement> & {
   withArrow?: boolean;
@@ -13,7 +17,15 @@ const ButtonLink = forwardRef(
     ref: ForwardedRef<HTMLAnchorElement>
   ) => {
     return (
-      <a {...props} ref={ref} className={cn(buttonClassName, className)}>
+      <a
+        {...props}
+        ref={ref}
+        className={cn(
+          buttonClassName,
+          className,
+          withArrow ? buttonWithArrowClassName : buttonNoArrowClassName
+        )}
+      >
         {children}
         {withArrow && <ButtonArrow />}
       </a>

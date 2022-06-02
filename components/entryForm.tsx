@@ -3,11 +3,11 @@ import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { getFileDataUrl } from '../lib/file';
 import { createImageWithSticker } from '../lib/canvas';
 import { trackEvent } from '../lib/google-analytics';
+import { getAssetUrl } from '../lib/assets';
 import Textarea from '../components/textarea';
 import InputLabel from '../components/inputLabel';
 import InputBox from '../components/inputBox';
 import SectionContainer from '../components/sectionContainer';
-import SectionDivider from '../components/sectionDivider';
 import SectionTitle from '../components/sectionTitle';
 import StickerItem from './stickerItem';
 import InputContainer from '../components/inputContainer';
@@ -51,7 +51,7 @@ type Props = {
   setCreatedEntry: Dispatch<SetStateAction<Entry | null>>;
 };
 
-const BUTTON_TEXT_ATTACH = 'Attach a photo';
+const BUTTON_TEXT_ATTACH = 'Take a picture';
 
 export default function EntryForm({
   mainImageUrl,
@@ -153,8 +153,39 @@ export default function EntryForm({
 
   return (
     <>
+      <div
+        className={cn(
+          'relative pt-[50px] pb-[30px] mx-auto mb-[40px] z-10',
+          'xs:pt-[80px]',
+          'sm:pt-[100px] sm:pb-[40px]'
+        )}
+      >
+        <img
+          src={getAssetUrl('images/illus-ladybug-in-leaf.png')}
+          alt="ladybug in a leaf"
+          width="408"
+          height="401"
+          className={cn(
+            'absolute inset-0 mx-auto w-auto h-[100%] aspect-[408/401] select-none -z-10',
+            'transform -translate-x-20',
+            'xs:-translate-x-36',
+            'sm:-translate-x-48'
+          )}
+          draggable={false}
+        />
+        <h1
+          className={cn(
+            'max-w-[245px] mx-auto pl-[75px] text-[40px] leading-[1] text-left uppercase z-10',
+            'xs:max-w-[325px] xs:text-[60px]',
+            'sm:max-w-[405px] sm:text-[80px]'
+          )}
+        >
+          <span className="font-arial font-bold">Tell</span> us <br />
+          more!
+        </h1>
+      </div>
       <SectionContainer>
-        <SectionTitle prefix="Step 1">Upload your image</SectionTitle>
+        <SectionTitle className="sm:text-left sm:pl-24">Step 1</SectionTitle>
         <div
           className={cn(
             'flex flex-col gap-[30px] mt-[25px]',
@@ -165,9 +196,7 @@ export default function EntryForm({
             className={cn(
               'text-center',
               'sm:flex sm:justify-center sm:w-[328]',
-              !mainImageUrl
-                ? 'sm:bg-purple-450 sm:items-center'
-                : 'sm:items-start'
+              !mainImageUrl ? 'sm:bg-sky-450 sm:items-center' : 'sm:items-start'
             )}
           >
             <div className="inline-flex">
@@ -209,16 +238,16 @@ export default function EntryForm({
           </div>
           <div className="sm:w-[360px]">
             <InputLabel htmlFor="message">
-              Tell us why a drug-free Singapore is important:
+              Tell us what you would do with an unlimited amount of data!
             </InputLabel>
             <div className="mt-[15px]">
-              <label className="block text-[15px] mb-[8px]">
+              <label className="block font-avenir text-[15px] mb-[8px]">
                 {remainingCharCount}/{MESSAGE_MAX_LENGTH} characters
               </label>
               <Textarea
                 id="message"
                 value={message}
-                placeholder="Type here..."
+                placeholder="<Type here>"
                 maxLength={MESSAGE_MAX_LENGTH}
                 disabled={isLoading}
                 hasError={isFormIncomplete && !message}
@@ -228,31 +257,42 @@ export default function EntryForm({
           </div>
         </div>
       </SectionContainer>
-      <SectionDivider />
       <SectionContainer>
-        <SectionTitle prefix="Step 2">Select a sticker or a badge</SectionTitle>
-        <ul
-          className={cn(
-            'flex flex-wrap justify-center gap-[40px] mt-[25px] select-none',
-            {
-              'pointer-events-none': isLoading,
-            }
-          )}
+        <SectionTitle>Step 2</SectionTitle>
+        <div
+          className={cn('bg-sky-450 p-[20px]', 'transition-all', {
+            'ring-4 ring-red-500': isFormIncomplete && !selectedSticker,
+          })}
         >
-          {STICKERS.map((sticker, idx) => (
-            <StickerItem
-              key={idx}
-              sticker={sticker}
-              isActive={idx === stickerIdx}
-              hasError={isFormIncomplete && !selectedSticker}
-              onClick={() => setStickerIdx(idx)}
-            />
-          ))}
-        </ul>
+          <ul
+            className={cn(
+              'flex flex-wrap justify-center mt-[25px] select-none',
+              {
+                'pointer-events-none': isLoading,
+              }
+            )}
+          >
+            {STICKERS.map((sticker, idx) => (
+              <StickerItem
+                key={idx}
+                sticker={sticker}
+                isActive={idx === stickerIdx}
+                onClick={() => setStickerIdx(idx)}
+              />
+            ))}
+          </ul>
+          <div
+            className={cn(
+              'max-w-[400px] mt-[20px] mx-auto font-myriadpro text-center text-[20px]'
+            )}
+          >
+            Decorate your pictures with these fun stickers. Simply tap on the
+            sticker you want.
+          </div>
+        </div>
       </SectionContainer>
-      <SectionDivider />
       <SectionContainer>
-        <SectionTitle>Provide contact details</SectionTitle>
+        <SectionTitle>Step 3</SectionTitle>
         <form
           className="flex flex-col flex-initial gap-[45px] mt-[25px]"
           onSubmit={formOnSubmit}
@@ -303,14 +343,17 @@ export default function EntryForm({
             )}
             {!isLoading ? (
               <>
-                <Button type="submit" className="sm:min-w-[220px]">
+                <Button
+                  type="submit"
+                  className="sm:min-w-[220px] sm:justify-center"
+                >
                   Submit
                 </Button>
               </>
             ) : (
               <LoaderBubbles />
             )}
-            <div className="mt-[20px] italic">
+            <div className="font-avenir mt-[20px]">
               Note: We do not store the image and text information you provide
               in this form into our server. When you make a pledge, it is stored
               in the local state only. It will be deleted once you refresh the

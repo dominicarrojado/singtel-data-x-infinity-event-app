@@ -4,19 +4,16 @@ import { Button as ReakitButton, ButtonHTMLProps } from 'reakit';
 import { useImageLoaded } from '../lib/custom-hooks';
 import LoaderShimmer from './loaderShimmer';
 import { Sticker } from '../lib/types';
-import { ENTRY_IMAGE_SIZE } from '../lib/constants';
 
 type Props = Omit<ButtonHTMLProps, 'children'> & {
   sticker: Sticker;
   isActive: boolean;
-  hasError?: boolean;
 };
 
 export default function StickerItem({
   sticker,
   className,
   isActive,
-  hasError,
   ...props
 }: Props) {
   const [imageRef, isImageLoaded] = useImageLoaded();
@@ -24,24 +21,29 @@ export default function StickerItem({
   return (
     <ReakitButton
       {...props}
+      as="li"
       className={cn(
-        'relative w-[132px] h-[132px] bg-white',
+        'relative inline-flex items-center justify-center flex-shrink-0 w-full p-[20px]',
         'transition-all',
-        !isActive ? 'hover:scale-110 focus:scale-110' : 'ring-[5px] ring-black',
-        {
-          ['ring-[5px] ring-red-500']: hasError,
-        },
+        'xs:w-[50%] xs:p-[15px]',
+        'sm:w-[25%] xs:p-[10px]',
+        !isActive
+          ? 'hover:scale-110 focus:scale-110'
+          : 'drop-shadow-[0_0_5px_rgba(0,0,0,1)]',
         className
       )}
     >
       {!isImageLoaded && <LoaderShimmer />}
       <img
         ref={imageRef}
-        src={sticker.previewImageUrl || sticker.imageUrl}
+        src={sticker.previewImageUrl}
         alt={sticker.imageAlt}
-        width={ENTRY_IMAGE_SIZE}
-        height={ENTRY_IMAGE_SIZE}
-        className="w-full h-auto aspect-[345/345]"
+        width={sticker.previewImageWidth}
+        height={sticker.previewImageHeight}
+        className={cn(
+          'max-w-full max-h-full w-auto h-auto',
+          sticker.previewImageClassName
+        )}
         draggable={false}
       />
     </ReakitButton>

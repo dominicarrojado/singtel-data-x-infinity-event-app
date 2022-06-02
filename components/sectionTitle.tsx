@@ -1,25 +1,20 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLProps } from 'react';
 import cn from 'classnames';
 
-type Props = {
-  prefix?: string;
-  children: ReactNode;
-};
+type Props = HTMLProps<HTMLHeadingElement>;
 
-export default function SectionTitle({ prefix, children }: Props) {
+export default function SectionTitle({ children, className, ...props }: Props) {
   return (
     <h2
+      {...props}
       className={cn(
-        'text-center text-[26px] leading-10 text-shadow',
-        'sm:text-[32px]'
+        'mb-[15px] text-center font-avenir text-[35px] leading-[1] uppercase',
+        'xs:text-[40px]',
+        'sm:mb-[20px] sm:pl-24 sm:text-left sm:text-[45px]',
+        className
       )}
     >
-      {prefix && (
-        <>
-          <span>{prefix}</span>{' '}
-        </>
-      )}
-      <span className="font-medium uppercase italic">{children}</span>
+      {children}
     </h2>
   );
 }

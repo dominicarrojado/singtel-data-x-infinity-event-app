@@ -34,6 +34,7 @@ export default function Layout({ children }: Props) {
       <div
         className={cn(
           'flex-1 flex flex-col w-full max-w-[800px] mx-auto bg-sky-550',
+          isRouteGallery ? 'bg-repeat-y' : 'bg-no-repeat',
           {
             'bg-repeat-y': isRouteGallery,
             'bg-bottom': isRouteHome || isRouteGalleryView,

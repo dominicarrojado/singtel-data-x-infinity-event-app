@@ -8,8 +8,9 @@ export default function InputLabel({ children, className, ...props }: Props) {
     <label
       {...props}
       className={cn(
-        'block text-[18px] leading-7 tracking-[1px] uppercase',
-        'sm:text-[22px]',
+        'block text-[24px] leading-8',
+        'xs:text-[26px]',
+        'sm:text-[28px]',
         className
       )}
     >

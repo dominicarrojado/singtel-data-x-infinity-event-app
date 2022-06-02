@@ -8,7 +8,7 @@ export default function Alert({ className, children, ...props }: Props) {
     <div
       {...props}
       className={cn(
-        'text-center text-white text-[18px] tracking-[1px] italic',
+        'font-avenir text-center text-[18px]',
         'sm:text-[22px]',
         className
       )}

@@ -35,7 +35,7 @@ export default function Enter() {
   return (
     <>
       <NextSeo canonical={metaUrl} openGraph={{ url: metaUrl }} />
-      <div className={cn('py-[50px] px-[15px] text-white', 'sm:px-[40px]')}>
+      <div className={cn('pb-[40px] px-[15px]', 'sm:px-[40px]')}>
         {!createdEntry ? (
           <EntryForm
             mainImageUrl={mainImageUrl}

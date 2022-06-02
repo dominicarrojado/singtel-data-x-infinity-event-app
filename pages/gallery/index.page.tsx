@@ -43,7 +43,7 @@ export default function Gallery() {
   return (
     <>
       <NextSeo canonical={metaUrl} openGraph={{ url: metaUrl }} />
-      <div className={cn('pb-[70px] px-[20px] text-white', 'sm:px-[40px]')}>
+      <div className={cn('pb-[40px] px-[20px]', 'sm:px-[40px]')}>
         <HeroBanner />
         {hasEntries && (
           <>

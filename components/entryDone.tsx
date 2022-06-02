@@ -58,7 +58,7 @@ export default function EntryDone({ entry, resetForm }: Props) {
         <div className="flex flex-col items-center gap-[25px]">
           <SectionTitle>Thanks for making a pledge!</SectionTitle>
           <EntryIndexImage entry={entry} />
-          <div className="max-w-[500px] mx-auto px-[20px] text-center text-[18px] italic">
+          <div className="font-avenir max-w-[500px] mx-auto px-[20px] text-center text-[18px]">
             Share on Facebook and stand a chance to win up to $100 worth of
             vouchers in a bimonthly draw!
           </div>

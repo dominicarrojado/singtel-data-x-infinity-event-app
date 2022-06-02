@@ -21,7 +21,7 @@ export default function MenuItem({
         <a
           {...props}
           className={cn(
-            'group pt-[30px] pb-[12px] px-[20px] text-white text-[15px] leading-[1] select-none',
+            'group pt-[30px] pb-[12px] px-[20px] text-[15px] leading-[1] select-none',
             'transition-colors',
             'xs:text-[20px]',
             'sm:px-[24px] sm:text-[30px]',

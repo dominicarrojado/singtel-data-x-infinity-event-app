@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import XIcon from '@heroicons/react/outline/XIcon';
 import cn from 'classnames';
@@ -10,7 +10,11 @@ import Button from './button';
 import LoaderBubbles from './loaderBubbles';
 import Alert from './alert';
 import { ErrorMessage, FetchState, GoogleAnalyticsEvent } from '../lib/types';
-import { IMAGE_GENERATED_TYPE, PROJECT_TITLE } from '../lib/constants';
+import {
+  IMAGE_CROP_TIMEOUT,
+  IMAGE_GENERATED_TYPE,
+  PROJECT_TITLE,
+} from '../lib/constants';
 
 type Props = {
   isOpen: boolean;
@@ -25,13 +29,14 @@ export default function ModalCropper({
   onClose,
   onCrop,
 }: Props) {
+  const cropperRef = useRef<Cropper | null>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const cancelButtonRef = useRef(null);
   const [fetchState, setFetchState] = useState(FetchState.DEFAULT);
   const isLoading = fetchState === FetchState.LOADING;
   const isSuccess = fetchState === FetchState.SUCCESS;
   const hasError = fetchState === FetchState.ERROR;
-  const cropperRef = useRef<Cropper | null>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const cancelButtonRef = useRef(null);
+  const [isCropping, setIsCropping] = useState(false);
   const initiateCropper = async () => {
     try {
       setFetchState(FetchState.LOADING);
@@ -62,17 +67,35 @@ export default function ModalCropper({
     });
   };
   const cropOnClick = () => {
+    setIsCropping(true);
+
     const cropper = getRefValue(cropperRef);
     const dataUrl = cropper.getCroppedCanvas().toDataURL(IMAGE_GENERATED_TYPE);
 
     onCrop(dataUrl);
-    onClose();
 
     trackEvent({
       event: GoogleAnalyticsEvent.PLEDGE_IMAGE_CROP,
       projectTitle: PROJECT_TITLE,
     });
   };
+
+  useEffect(() => {
+    let timeout: number;
+
+    if (isCropping) {
+      timeout = window.setTimeout(() => {
+        setIsCropping(false);
+        onClose();
+      }, IMAGE_CROP_TIMEOUT);
+    }
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCropping]);
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -122,7 +145,7 @@ export default function ModalCropper({
                 <div className="flex justify-between p-[15px] border-b-[1px] border-b-gray-200">
                   <Dialog.Title
                     className={cn(
-                      'text-[#444] text-xl',
+                      'text-gray-800 text-xl',
                       'xs:text-2xl',
                       'sm:text-3xl'
                     )}
@@ -139,11 +162,15 @@ export default function ModalCropper({
                     />
                   </button>
                 </div>
-                <div className="p-[15px] select-none">
+                <div
+                  className={cn('p-[15px] select-none', {
+                    'pointer-events-none': isCropping,
+                  })}
+                >
                   <div className="relative">
-                    {(isLoading || hasError) && (
-                      <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center ">
-                        {isLoading ? (
+                    {(isLoading || isCropping || hasError) && (
+                      <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                        {isLoading || isCropping ? (
                           <LoaderBubbles className="absolute inset-0 z-10" />
                         ) : (
                           <div className="flex flex-col items-center gap-[30px]">
@@ -163,8 +190,11 @@ export default function ModalCropper({
                   </div>
                 </div>
                 <div className="border-t-[1px] border-t-gray-200 p-[15px] text-center">
-                  <Button disabled={!isSuccess} onClick={cropOnClick}>
-                    Crop
+                  <Button
+                    disabled={!isSuccess || isCropping}
+                    onClick={cropOnClick}
+                  >
+                    {!isCropping ? 'Crop' : 'Cropping...'}
                   </Button>
                 </div>
               </Dialog.Panel>

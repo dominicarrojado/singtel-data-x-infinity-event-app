@@ -2,8 +2,6 @@ import React, { HTMLProps } from 'react';
 import cn from 'classnames';
 import { Button as ReakitButton } from 'reakit';
 import { getAssetUrl } from '../lib/assets';
-import { useImageLoaded } from '../lib/custom-hooks';
-import LoaderShimmer from './loaderShimmer';
 
 type Props = HTMLProps<HTMLLabelElement> & {
   hasError?: boolean;
@@ -31,7 +29,7 @@ export default function InputFileLabelImage({
         />
       )}
       <img
-        src={getAssetUrl('images/icon-attach-photo.png')}
+        src={getAssetUrl('images/icon-take-picture.jpeg')}
         alt={title}
         width="328"
         height="328"

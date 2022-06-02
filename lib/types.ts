@@ -58,7 +58,10 @@ export type StoreContextType = {
 export type Sticker = {
   imageUrl: string;
   imageAlt: string;
-  previewImageUrl: string | null;
+  previewImageUrl: string;
+  previewImageWidth: number;
+  previewImageHeight: number;
+  previewImageClassName: string;
 };
 
 export type Entry = {

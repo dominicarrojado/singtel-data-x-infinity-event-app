@@ -11,7 +11,7 @@ type Props = {
 
 export default function EntryIndex({ selectedEntry }: Props) {
   return (
-    <div className={cn('py-[70px] px-[15px] text-white', 'sm:px-[40px]')}>
+    <div className={cn('pb-[70px] px-[15px]', 'sm:px-[40px]')}>
       <div
         className={cn(
           'flex flex-col flex-wrap gap-[30px]',
@@ -27,7 +27,7 @@ export default function EntryIndex({ selectedEntry }: Props) {
           <div>
             <div
               className={cn(
-                'inline-block bg-purple-350 p-[16px] text-[22px] tracking-[1px] uppercase',
+                'inline-block bg-purple-350 p-[16px] text-[22px] uppercase',
                 'sm:p-[20px] sm:text-[25px]'
               )}
             >
@@ -36,7 +36,7 @@ export default function EntryIndex({ selectedEntry }: Props) {
           </div>
           <div
             className={cn(
-              'max-w-full h-auto bg-sky-550 border-4 border-white p-[16px] font-myriadpro text-purple-450 text-[18px] tracking-[1px] break-words',
+              'max-w-full h-auto bg-sky-550 border-4 border-white p-[16px] font-myriadpro text-purple-450 text-[18px] break-words',
               'sm:min-h-[237px] sm:p-[20px] sm:text-[20px]'
             )}
           >
