@@ -4,7 +4,7 @@ import { trackEvent } from '../lib/google-analytics';
 import Button from './button';
 import EntryIndexImage from './entryIndexImage';
 import SectionContainer from './sectionContainer';
-import SectionTitle from './sectionTitle';
+import EntryTitle from './entryTitle';
 import ButtonLink from './buttonLink';
 import {
   Entry,
@@ -54,13 +54,23 @@ export default function EntryDone({ entry, resetForm }: Props) {
 
   return (
     <>
+      <EntryTitle>
+        <span className="font-arial font-bold">Thanks</span> for <br />
+        sharing!
+      </EntryTitle>
       <SectionContainer>
         <div className="flex flex-col items-center gap-[25px]">
-          <SectionTitle>Thanks for making a pledge!</SectionTitle>
           <EntryIndexImage entry={entry} />
-          <div className="font-avenir max-w-[500px] mx-auto px-[20px] text-center text-[18px]">
-            Share on Facebook and stand a chance to win up to $100 worth of
-            vouchers in a bimonthly draw!
+          <div className="font-avenir max-w-[670px] mx-auto px-[20px] text-center text-[18px]">
+            Share this on Facebook and stand a chance to win one of the
+            following prizes: <br />
+            1st Prize - Parrot Mambo Drone <br />
+            2nd Prize - JBL Pulse 3 <br />
+            3rd Prize - Ring Doorbell 2 <br />
+            <br />
+            Do remember to include these hashtags so that we can identify you!
+            <br />
+            #Singtel #DataXInfinity #JBL #ParrotMambo #RingDoorBell
           </div>
         </div>
       </SectionContainer>
@@ -77,7 +87,7 @@ export default function EntryDone({ entry, resetForm }: Props) {
             {LINK_TEXT_FACEBOOK}
           </ButtonLink>
           <Button onClick={downloadOnClick}>{BUTTON_TEXT_DOWNLOAD}</Button>
-          <Button onClick={resetOnClick}>Make another pledge</Button>
+          <Button onClick={resetOnClick}>Submit another one</Button>
         </div>
       </SectionContainer>
     </>

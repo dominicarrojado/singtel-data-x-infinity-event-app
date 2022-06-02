@@ -10,6 +10,8 @@ export default function Footer() {
       <img
         src={getAssetUrl('images/illus-coconut-trees.png')}
         alt="coconut trees"
+        width="657"
+        height="914"
         className={cn('w-[80%] aspect-[657/914]', 'xs:w-[70%]', 'xs:w-[60%]')}
       />
     </div>

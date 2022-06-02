@@ -55,7 +55,7 @@ export default function Gallery() {
               )}
             >
               <InformationCircleIcon className="inline-block w-4 h-4 -mt-[4px] mr-1" />
-              The fake (but realistic) pledges shown below are made possible
+              The fake (but realistic) submissions shown below are made possible
               with{' '}
               <ExternalLink href={ExternalUrl.FAKER} className="underline">
                 Faker

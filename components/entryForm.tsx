@@ -3,7 +3,6 @@ import React, { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { getFileDataUrl } from '../lib/file';
 import { createImageWithSticker } from '../lib/canvas';
 import { trackEvent } from '../lib/google-analytics';
-import { getAssetUrl } from '../lib/assets';
 import Textarea from '../components/textarea';
 import InputLabel from '../components/inputLabel';
 import InputBox from '../components/inputBox';
@@ -18,6 +17,7 @@ import InputFileLabelText from '../components/inputFileLabelText';
 import ModalCropper from '../components/modalCropper';
 import LoaderBubbles from './loaderBubbles';
 import Alert from './alert';
+import EntryTitle from './entryTitle';
 import {
   Entry,
   ErrorMessage,
@@ -153,37 +153,10 @@ export default function EntryForm({
 
   return (
     <>
-      <div
-        className={cn(
-          'relative pt-[50px] pb-[30px] mx-auto mb-[40px] z-10',
-          'xs:pt-[80px]',
-          'sm:pt-[100px] sm:pb-[40px]'
-        )}
-      >
-        <img
-          src={getAssetUrl('images/illus-ladybug-in-leaf.png')}
-          alt="ladybug in a leaf"
-          width="408"
-          height="401"
-          className={cn(
-            'absolute inset-0 mx-auto w-auto h-[100%] aspect-[408/401] select-none -z-10',
-            'transform -translate-x-20',
-            'xs:-translate-x-36',
-            'sm:-translate-x-48'
-          )}
-          draggable={false}
-        />
-        <h1
-          className={cn(
-            'max-w-[245px] mx-auto pl-[75px] text-[40px] leading-[1] text-left uppercase z-10',
-            'xs:max-w-[325px] xs:text-[60px]',
-            'sm:max-w-[405px] sm:text-[80px]'
-          )}
-        >
-          <span className="font-arial font-bold">Tell</span> us <br />
-          more!
-        </h1>
-      </div>
+      <EntryTitle>
+        <span className="font-arial font-bold">Tell</span> us <br />
+        more!
+      </EntryTitle>
       <SectionContainer>
         <SectionTitle className="sm:text-left sm:pl-24">Step 1</SectionTitle>
         <div

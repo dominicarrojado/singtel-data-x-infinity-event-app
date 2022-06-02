@@ -46,7 +46,7 @@ export default function EntryIndex({ selectedEntry }: Props) {
       </div>
       <div className="mt-[50px] text-center">
         <Link href={Route.ENTER} passHref>
-          <ButtonLink>Make your pledge today!</ButtonLink>
+          <ButtonLink>Submit yours today!</ButtonLink>
         </Link>
       </div>
     </div>

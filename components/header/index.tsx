@@ -53,9 +53,9 @@ export default function Header() {
             width="145"
             height="80"
             className={cn(
-              'w-auto h-[48px] aspect-[87/48]',
-              'xs:h-[53px] xs:aspect-[96/53]',
-              'sm:h-[64px] sm:aspect-[116/64]'
+              'w-auto h-[48px] aspect-[145/80]',
+              'xs:h-[53px]',
+              'sm:h-[64px]'
             )}
           />
         </a>
