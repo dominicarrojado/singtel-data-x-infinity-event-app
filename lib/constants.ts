@@ -6,7 +6,7 @@ export const PROJECT_TITLE = 'Singtel Data X Infinity Event Singapore';
 export const MAIN_AUTHOR = 'Dominic Arrojado';
 export const MAIN_TITLE = `${PROJECT_TITLE} | ${SITE_NAME}`;
 export const MAIN_DESC =
-  'Singtel Data X Infinity - Infinite possibilities. Infinite data.';
+  'Infinite possibilities. Infinite data. Singtel introduces Data X Infinity. Get unlimited data for a flat flee of $39.90/mth! Submit an entry and let us know what you would do with all that data!';
 export const MAIN_ORIGIN = 'https://dominicarrojado.com';
 export const MAIN_PATH = '/singtel-data-x-infinity-event-app/';
 export const MAIN_URL = `${MAIN_ORIGIN}${MAIN_PATH}`;
